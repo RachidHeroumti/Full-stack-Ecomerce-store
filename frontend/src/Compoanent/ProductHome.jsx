@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {TbTruckDelivery} from "react-icons/tb"
 import{MdFavorite ,MdHelp} from "react-icons/md"
 import {FaWallet ,FaUserFriends } from "react-icons/fa"
@@ -11,8 +11,7 @@ import {  toast } from 'react-toastify'
 import { EcoState } from '../Context/EcoProvider'
 
 function ProductHome() {
-  //const[products ,setProducts]=useState(products) ;
-  const {searchdata,setProductDetails} =EcoState()
+  const {searchdata,setProductDetails,setSearchData} =EcoState()
   const navigate=useNavigate();
 
    const toastOptions = {
@@ -22,6 +21,8 @@ function ProductHome() {
     draggable: true,
     theme: "light",
   };
+
+
    const OnDetailes =(product)=>{
      setProductDetails(product) ;
        navigate("/details");
@@ -29,6 +30,9 @@ function ProductHome() {
    const AddToCart =()=>{
      toast.success("Add to cart successfuly ",toastOptions) ;
    }
+
+
+
   return (
     <div className='max-w-[1640px] mx-auto p-4'>
       <div className=' grid lg:grid-cols-4 md:grid-cols-2 gap-6'>
@@ -37,9 +41,9 @@ function ProductHome() {
    return  (
      <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 '>
           <img src={product.image} alt=''
-           className='rounded-lg object-cover w-full h-[200px]' />
+           className='rounded-lg  w-full h-[300px] p-2' />
            <div className='px-1'>
-            <h2 className=' text-xl font-light'>{product.name}</h2>
+            <h2 className=' text-xl font-light'>{product.title}</h2>
             <h2 className='text-xl font-bold text-orange-600'> {product.price}<span> $$</span></h2>
            </div>
            <div className='flex flex-col'>

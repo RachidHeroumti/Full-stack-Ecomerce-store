@@ -7,7 +7,7 @@ import {AiFillCaretRight ,AiFillDelete} from "react-icons/ai"
 import NavBar from './NavBar';
 
  function CardItems() {
- const {setProductDetails} =EcoState();
+ const {setProductDetails,allProduct} =EcoState();
  const[total,setTotal] =useState(0);
  const[dataIncart,setDataIncart]=useState([]) ;
  const navigate =useNavigate();
@@ -24,7 +24,7 @@ import NavBar from './NavBar';
               t += price;
            }
         })
-        setTotal(t) ;
+        setTotal(t.toFixed(2)) ;
      }
       useEffect(()=>{ 
          console.log("data in cart changed ")
@@ -32,7 +32,7 @@ import NavBar from './NavBar';
            addToTotal() ;
       },[dataIncart])
 useEffect(()=>{
-     setDataIncart(products) ;
+     setDataIncart(allProduct) ;
     },[]) ;
        
     const onDeletFromCart=(i)=>{ 
@@ -41,9 +41,12 @@ useEffect(()=>{
         console.log(" pr copy : ",productsCopy); 
        setDataIncart(
          productsCopy.filter((item)=>{
-          return item.name!=i.name ;
+          return item.title!=i.title ;
          })
        );
+      }
+      const OnBuy=()=>{
+        navigate("/address");
       }
 
  return (
@@ -56,9 +59,9 @@ useEffect(()=>{
    return  (
      <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 '>
           <img src={product.image} alt=''
-           className='rounded-lg object-cover w-full h-[200px]' />
+           className='rounded-lg  w-full h-[250px]' />
            <div className='px-1'>
-            <h2 className=' text-xl font-light'>{product.name}</h2>
+            <h2 className=' text-2xl font-light'>{product.title}</h2>
             <h2 className='text-xl font-bold text-orange-600'> {product.price}<span> $$</span></h2>
            </div>
            <div className='flex flex-row justify-between mx-5'>
@@ -82,7 +85,7 @@ useEffect(()=>{
     
      <h1 className='text-xl font-semibold '>SubTotal <span> ({dataIncart.length} item)</span></h1>
      <h2 className=' text-orange-600 text-xl font-bold m-1'>{total}<span>$$</span></h2>
-      <button 
+      <button  onClick={()=>{OnBuy()}}
          className=' w-full text-center bg-yellow-500 rounded-xl  px-3 py-1 text-black'>
                  Buy Now</button>
    </div>

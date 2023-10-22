@@ -17,13 +17,14 @@ function App() {
   return (
   <BrowserRouter>
    <Routes>  
-     <Route path='/rgister' element={<Register/>}/>
+     <Route path='/register' element={<Register/>}/>
      <Route path='/login' element={<Login/>}/>
      <Route path='/' element={<Home/>}/>
      <Route path='/details' element={<Details product={productDetails}/>}/>
      <Route path='/cart' element={ <CartItems/>} />
      <Route path='/Address' element={ <Address/>} />
      <Route path='/Order' element={<Order addressInfo={address}/>}></Route>
+    
    </Routes>
   </BrowserRouter>
   )

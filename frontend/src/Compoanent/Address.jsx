@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { countries } from '../data/data'
+import { countyCode } from '../data/data'
 import Order from './Order'
 import { useNavigate } from 'react-router-dom'
 import {ToastContainer,toast} from "react-toastify"
 import {EcoState} from "../Context/EcoProvider"
 
 function Address() {
-  const{ setAddress} =EcoState()
+  const{setAddress} =EcoState()
  const[countryName,setCountryName] =useState("Morocco");
+  const[countryCode,setCountryCode] =useState("+212");
  const[contactName,setContactName] =useState("");
  const[mobile,setMobile] =useState();
   const[city,setCity] =useState("");
@@ -16,6 +17,7 @@ const[province,setProvince] =useState("");
 const[zip,setZip] =useState("");
 const[asdefAddress,setAsdefAdress]=useState(true) ;
 
+  const navigate=useNavigate();
      const toastOptions = {
     position: "bottom-right",
     autoClose: 3000,
@@ -24,10 +26,10 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
     theme: "dark",
   };
 
-   const navigate=useNavigate();
+
   const onSave=()=>{
     if(!countryName||!contactName||!mobile||!city||!street||!province||!zip||!asdefAddress){
-          console.log(countryName,contactName,mobile,city,street,province,zip,asdefAddress);
+        
        toast.error("some fields are empty !",toastOptions)
     
     }
@@ -49,7 +51,17 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
      
     }
 
-   
+const setCodeCountry = (name) => {
+  let code ="";
+    countyCode.filter((it) => {
+      if (it.name === name) {
+        code=it.code ;
+        setCountryCode(code);
+      }
+    })
+  
+};
+
 
 
   return (
@@ -65,13 +77,13 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
            <select className='px-10 py-2 rounded border border-gray-400 outline-none' 
               
              value={countryName}
-                onChange={(e)=>{setCountryName(e.target.value)}}
+                onChange={(e)=>{setCountryName(e.target.value) ; setCodeCountry(e.target.value)}}
            >
 
-          { countries.map((country,i)=>{
+          { countyCode.map((country,i)=>{
             return(
-            <option key={i} value={country}>
-             {country}
+            <option key={i} value={country.name}>
+             {country.name}
              </option>)
            }) 
              }
@@ -87,7 +99,11 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
                 onChange={(e)=>{setContactName(e.target.value)}}
                 />
              <div className='p-2 flex lg:flex-row flex-col'>
-              <input className='px-2 py-2 outline-none rounded-lg me-2  bg-gray-200 my-1' type='text' placeholder='Country Code (+XXX)' />
+              <input className=' text-center py-2 outline-none rounded-lg me-2 
+                 bg-gray-200 my-1' type='text' placeholder='Country Code (+XXX)' 
+                  value={countryCode}
+                  readOnly
+                  />
               <input className='px-5 py-2 outline-none rounded-lg  
                bg-gray-200 my-1' type='text' placeholder='Mobile Number *'
                 value={mobile}
@@ -123,7 +139,7 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
         className="mx-2 w-6 h-6 text-indigo-600"
         id="myCheckbox"
         name="myCheckbox"
-        
+        defaultChecked
         onChange={(e)=>{setAsdefAdress(e.target.value)}}
       />
           </div>

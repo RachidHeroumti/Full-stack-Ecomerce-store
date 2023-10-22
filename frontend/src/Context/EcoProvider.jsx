@@ -1,4 +1,4 @@
-import { useContext,createContext ,useState} from 'react'
+import { useContext,createContext ,useState, useEffect} from 'react'
 import { products } from '../data/data';
 
 const EcoContext=createContext() ;
@@ -6,9 +6,18 @@ const EcoContext=createContext() ;
 function EcoProvider({children}) {
   const[allProduct,setAllProduct] =useState([])
  const [productDetails,setProductDetails] = useState([]) ;
- const[searchdata,setSearchData]=useState(products);
+ const[searchdata,setSearchData]=useState([]);
  const[address,setAddress] =useState("");
-
+ 
+  useEffect(()=>{
+   fetch('https://fakestoreapi.com/products?limit=5')
+            .then(res=>res.json())
+            .then(prs=>{
+              console.log( "arry come from fetch :",prs)
+             setAllProduct(prs);
+             setSearchData(prs) ;
+            })
+  },[])
 
   return (
     <EcoContext.Provider value={{

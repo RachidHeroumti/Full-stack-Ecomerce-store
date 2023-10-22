@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {AiFillDelete } from 'react-icons/ai'
+import{ FaCcVisa ,FaPaypal} from 'react-icons/fa'
+import{ FaCcMastercard} from 'react-icons/fa6'
+
 import { products} from "../data/data"
 
 
@@ -80,9 +83,9 @@ function Order({addressInfo}) {
       <div className=' bg-white my-1 rounded-lg p-2'>
        <h1 className=' font-bold text-center'>Add a new card</h1>
         <div className='flex flex-row'>
-           <img src="" alt=""  className='w-[30px] h-[30px] p-2'/>
-            <img src="" alt=""  className='w-[30px] h-[30px] p-2'/>
-             <img src="" alt=""  className='w-[30px] h-[30px] p-2'/>
+           <FaCcVisa size={20}  className='mx-2'/>
+            <FaCcMastercard size={20}  className='mx-2'/>
+             <FaPaypal  size={20} className='mx-2'/>
         </div>
       </div>
       <input type='text' placeholder='Card Number'
@@ -94,7 +97,7 @@ function Order({addressInfo}) {
 
         <div className='flex items-center py-3'>
         <label className='px-3'>Save card details</label>
-         <input type='checkbox' 
+         <input type='checkbox'  defaultChecked
            className='w-6 h-6 rounded-lg outline-none'/>
        </div>
   <button onClick={()=>{setIstopPay(false)}}
