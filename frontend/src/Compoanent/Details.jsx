@@ -1,23 +1,44 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import {BsFillCartFill } from "react-icons/bs"
 import { useNavigate } from 'react-router-dom';
 import {ToastContainer, toast } from 'react-toastify' 
+import {AddcardRoute} from '../RoutersApi/ApiRoutes'
 
 function Details({product}) {
    const [quantity, setQuantity] = useState(1);
    const navigate=useNavigate() ;
-     const toastOptions = {
+   const [imagePr,setImagePr]=useState(product.image)
+  const toastOptions = {
     position: "bottom-right",
     autoClose: 500,
     pauseOnHover: true,
     draggable: true,
     theme: "light",
   };
-    const AddToCart =()=>{
-       console.log("added to cart !")
-     toast.success("Add to cart successfuly ",toastOptions) ;
+    const AddToCart =async()=>{
+       const token=localStorage.getItem('token');
+
+       if(token){
+         const config={
+           headers:{
+            Authorization :`Bearer ${token}`,
+           }
+         }
+        try{
+          const res=await axios.post(AddcardRoute,config);
+           if(res.data._id){
+              toast.success("Add to cart successfuly ",toastOptions) ;
+           }
+
+        }catch(err){
+          console.log(err);
+        }
+      }
+     
    }
-  // Event handler to update the quantity when the input changes
+
+  //Event handler to update the quantity when the input changes
   const handleQuantityChange = (e) => {
     const newValue = parseInt(e.target.value, 10);
     setQuantity(newValue);
@@ -30,21 +51,25 @@ function Details({product}) {
    else
     navigate('/order')
    }
-  return (
 
+  return (
     <div className='max-w-[1640] py-3'>
       <div className='lg:flex lg:items-center '>
         <div className='lg:w-[400px] flex m-2  flex-col'>
-               <img src={product.image} alt='' 
-                 className='w-full object-cover'/>
-                 <div className='flex items-center p-2'>
-                   <img src='https://images.pexels.com/photos/5588490/pexels-photo-5588490.jpeg?auto=compress&cs=tinysrgb&w=300' alt='' 
+               <img src={imagePr} alt='' 
+                 className='w-full h-[350px] object-cover'/>
+                <div className='flex items-center p-2'>
+                   <img src={product.images[0]} alt=''
+                     onClick={()=>{setImagePr(product.images[0])}} 
                        className='h-[100px] w-[75px] px-1'/>
-                   <img src='https://images.pexels.com/photos/6893376/pexels-photo-6893376.jpeg?auto=compress&cs=tinysrgb&w=300' alt='' 
+                   <img src={product.images[1]} alt=''
+                          onClick={()=>{setImagePr(product.images[1])}}  
                        className='h-[100px] w-[75px] px-1'/>  
-                   <img src='https://images.pexels.com/photos/1006293/pexels-photo-1006293.jpeg?auto=compress&cs=tinysrgb&w=300' alt='' 
+                   <img src={product.images[2]} alt=''
+                         onClick={()=>{setImagePr(product.images[2])}}  
                        className='h-[100px] w-[75px] px-1'/>  
-                   <img src='https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&w=300' alt='' 
+                   <img src={product.images[3]} alt='' 
+                          onClick={()=>{setImagePr(product.images[3])}} 
                        className='h-[100px] w-[75px] px-1'/>         
                  </div>
         </div>

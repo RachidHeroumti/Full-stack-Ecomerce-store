@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {ToastContainer,toast} from 'react-toastify'
+import {loginRoute} from '../RoutersApi/ApiRoutes'
+import axios from 'axios'
+import cookies from 'js-cookie'
+
 
 function Login() {
   const[email,setEmail] =useState("");
   const[password ,setPassword] =useState("") ;
-  
+  const navigate=useNavigate();
   const toastOption={
     position: "bottom-right",
     autoClose: 3000,
@@ -13,13 +17,25 @@ function Login() {
     draggable: true,
     theme: "dark",
   };
-  const OnLogin=()=>{
+  const OnLogin=async()=>{
     //
     if(!email||!password){
        toast.error("Some fields is Empty !",toastOption) ;
        return ;
     }
-     //check login 
+    try{
+      const res= await axios.post(loginRoute,{email,password});
+
+      if(res.data.id){
+      
+      const token=res.data.token ;
+       cookies.set('token', token, { expires: 7 });
+          navigate('/');
+        }
+
+    }catch(err){
+      console.log(err)
+    }
   }
 
   return (

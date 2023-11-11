@@ -1,22 +1,29 @@
 import { useContext,createContext ,useState, useEffect} from 'react'
 import { products } from '../data/data';
+import cookies from 'js-cookie'
 
 const EcoContext=createContext() ;
 
 function EcoProvider({children}) {
+  const[userToken,setUserToken]=useState("");
   const[allProduct,setAllProduct] =useState([])
  const [productDetails,setProductDetails] = useState([]) ;
  const[searchdata,setSearchData]=useState([]);
  const[address,setAddress] =useState("");
+ const[dataToBay,setDataToBay]=useState([]);
  
   useEffect(()=>{
-   fetch('https://fakestoreapi.com/products?limit=5')
-            .then(res=>res.json())
-            .then(prs=>{
-              console.log( "arry come from fetch :",prs)
-             setAllProduct(prs);
-             setSearchData(prs) ;
-            })
+     if(allProduct){
+      setSearchData(allProduct);
+     }
+  },[allProduct])
+
+  useEffect(()=>{
+    const token=cookies.get("token");
+     if(token) { 
+     setUserToken(token);
+    
+    }
   },[])
 
   return (
@@ -24,7 +31,9 @@ function EcoProvider({children}) {
       productDetails ,setProductDetails ,
       searchdata ,setSearchData ,
       allProduct ,setAllProduct,
-      address ,setAddress
+      address ,setAddress,
+      userToken,setUserToken,
+      dataToBay,setDataToBay
 
     }}>{children}
     </EcoContext.Provider>

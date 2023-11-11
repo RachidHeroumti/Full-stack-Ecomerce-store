@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import {TbTruckDelivery} from "react-icons/tb"
-import{MdFavorite ,MdHelp} from "react-icons/md"
-import {FaWallet ,FaUserFriends } from "react-icons/fa"
-import { BsFillSaveFill} from "react-icons/bs"
 import {BsFillCartFill } from "react-icons/bs" 
-import {AiOutlineMenu,AiOutlineSearch,AiOutlineClose,AiFillTag,AiFillCaretRight} from "react-icons/ai"
+import {AiFillCaretRight} from "react-icons/ai"
 import {products} from "../data/data"
 import { useNavigate } from 'react-router-dom'
 import {  toast } from 'react-toastify'
 import { EcoState } from '../Context/EcoProvider'
+import axios from 'axios'
+import {getProductRoute,AddcardRoute} from '../RoutersApi/ApiRoutes'
 
 function ProductHome() {
-  const {searchdata,setProductDetails,setSearchData} =EcoState()
+  const {searchdata,setProductDetails,setAllProduct,userToken} =EcoState()
   const navigate=useNavigate();
 
+  let ls;
    const toastOptions = {
     position: "bottom-right",
     autoClose: 500,
@@ -21,14 +20,50 @@ function ProductHome() {
     draggable: true,
     theme: "light",
   };
+    const config={
+           headers:{
+            Authorization :`Bearer ${userToken}`,
+           }}
+
+useEffect(()=>{
+    const getPrs=async()=>{
+      try{
+   const res =await axios.get(getProductRoute);
+     setAllProduct(res.data.products);
+
+      }catch(err){
+        console.log(err);   
+      }
+    }
+    getPrs();
+},[]);
 
 
    const OnDetailes =(product)=>{
      setProductDetails(product) ;
        navigate("/details");
    }
-   const AddToCart =()=>{
-     toast.success("Add to cart successfuly ",toastOptions) ;
+
+   const AddToCart =async(product)=>{
+    
+       if(userToken){
+        try{
+            
+      const res = await axios.post(AddcardRoute, { product: product._id,quantity:1 },
+                   config);
+
+           console.log("To add to card ",res);
+           if(res.status=200){
+              toast.success("Add to cart successfuly ",toastOptions) ;
+           }
+
+        }catch(err){
+          console.log(err);
+        }
+      }else{
+        navigate('/login');
+      }
+     
    }
 
 
@@ -41,18 +76,18 @@ function ProductHome() {
    return  (
      <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 '>
           <img src={product.image} alt=''
-           className='rounded-lg  w-full h-[300px] p-2' />
+           className='rounded-lg  w-full h-[250px] ' />
            <div className='px-1'>
             <h2 className=' text-xl font-light'>{product.title}</h2>
             <h2 className='text-xl font-bold text-orange-600'> {product.price}<span> $$</span></h2>
            </div>
-           <div className='flex flex-col'>
-              <button onClick={()=>{AddToCart()}}
-                className='flex items-center bg-gradient-to-tr from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1'>
+           <div className='flex flex-col p-2'>
+              <button onClick={()=>{AddToCart(product)}}
+                className='flex items-center bg-gradient-to-tr from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1 hover:bg-slate-500'>
                   <BsFillCartFill  className='mx-1'/>
                  Add to cart</button>
                          <button onClick={()=>{OnDetailes(product)}}
-                           className='flex items-center bg-gradient-to-tr  from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1'>
+                           className='flex items-center bg-gradient-to-tr  from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1 hover:bg-slate-500'>
                   <AiFillCaretRight  className='mx-1'/>
                 Details</button>
           
@@ -72,4 +107,4 @@ function ProductHome() {
   )
 }
 
-export default ProductHome
+export default ProductHome 

@@ -4,11 +4,13 @@ import{ FaCcVisa ,FaPaypal} from 'react-icons/fa'
 import{ FaCcMastercard} from 'react-icons/fa6'
 
 import { products} from "../data/data"
+import { EcoState } from '../Context/EcoProvider'
 
 
 function Order({addressInfo}) {
   const[istoPay,setIstopPay] =useState(false) ;
   const[tolat,setTotal] =useState(1);
+  const {dataToBay}=EcoState();
 
         const addToTotal =()=>{
               let t=0;
@@ -19,8 +21,7 @@ function Order({addressInfo}) {
            }
         })
         setTotal(t) ;
-     }
-
+     }   
      useEffect(()=>{
       addToTotal();
      },[]) ;
@@ -47,7 +48,7 @@ function Order({addressInfo}) {
         </div>
   <div className='grid gap-5'>
 
-      {  products.map((item,i)=>{
+      {dataToBay&&dataToBay.map((item,i)=>{
   return ( <div className='rounded bg-gray-100' key={i}>
          <div className='flex flex-row p-4'>
           <img className='rounded-lg h-[150px] w-[100px] '

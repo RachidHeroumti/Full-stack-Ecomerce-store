@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom'
 import { EcoState } from '../Context/EcoProvider'
 
 function NavBar() {
+const [isUserAdmin,setIsUserAdmin]=useState(false) ;
  const navigate =useNavigate();
- const {setSearchData ,searchdata} =EcoState();
- const {allProduct} =EcoState()
+ const {setSearchData ,searchdata,allProduct} =EcoState();
  const[nav,setNav]=useState(false);
  const [category,setCategory]=useState([]);
 
@@ -32,7 +32,7 @@ function NavBar() {
       fetch('https://fakestoreapi.com/products/categories')
             .then(res=>res.json())
             .then(cats=>{
-               console.log("category : ",cats);
+            
                 setCategory(cats)
             })
             
@@ -40,7 +40,7 @@ function NavBar() {
 
 
  const onSetCategory=(ctgName)=>{
-   
+
     setSearchData(
        allProduct.filter((item)=>{
         return item.category==ctgName ;
@@ -51,7 +51,7 @@ function NavBar() {
  }
 
   return (
-    <div className=' flex justify-between p-3 fixed top-0 left-0 bg-white w-full'>
+    <div className=' flex justify-between p-3 fixed top-0 left-0 z-10 bg-white w-full'>
        <div className='max-h-[200px] flex items-center '>
         <div >
           <AiOutlineMenu size={25} className='' onClick={()=>{setNav(true)}}/>
@@ -81,7 +81,15 @@ function NavBar() {
                My Account </h1>
                <AiOutlineClose  size={25} className='mx-2 text-2xl font-bold'  onClick={()=>{setNav(false)}}/>
             </div>
-
+       {
+         isUserAdmin ?
+          <div className='p-3'>
+            <h1 className='text-xl py-1 bg-slate-300 rounded-lg cursor-pointer my-1 text-center'>Add Product </h1>
+            <h1 className='text-xl py-1 bg-slate-300 rounded-lg cursor-pointer my-1 text-center'>Add Category</h1>
+          </div> 
+            
+            :""
+       }
             <div className='px-2 cursor-pointer '>
                <h1 className='text-gray-800 pt-3 font-bold text-xl'>Categories</h1>
                {

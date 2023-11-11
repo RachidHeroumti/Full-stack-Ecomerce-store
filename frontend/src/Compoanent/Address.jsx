@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { countyCode } from '../data/data'
 import Order from './Order'
 import { useNavigate } from 'react-router-dom'
 import {ToastContainer,toast} from "react-toastify"
 import {EcoState} from "../Context/EcoProvider"
+import axios from 'axios'
+import { addAddressRoute } from '../RoutersApi/ApiRoutes'
+import Cookies from 'js-cookie'
 
 function Address() {
-  const{setAddress} =EcoState()
+  const{setAddress,userToken} =EcoState()
  const[countryName,setCountryName] =useState("Morocco");
   const[countryCode,setCountryCode] =useState("+212");
  const[contactName,setContactName] =useState("");
@@ -18,6 +21,7 @@ const[zip,setZip] =useState("");
 const[asdefAddress,setAsdefAdress]=useState(true) ;
 
   const navigate=useNavigate();
+
      const toastOptions = {
     position: "bottom-right",
     autoClose: 3000,
@@ -27,25 +31,39 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
   };
 
 
-  const onSave=()=>{
-    if(!countryName||!contactName||!mobile||!city||!street||!province||!zip||!asdefAddress){
-        
+  useEffect(()=>{
+    const token =Cookies.get('token')
+     if(!userToken&&!token){
+      navigate("/login");
+     }
+  },[])
+
+  const onSave=async()=>{
+    if(!countryName||!contactName||!mobile||!city||!street||!province||!zip){ 
        toast.error("some fields are empty !",toastOptions)
-    
     }
     else {
-    console.log(countryName,contactName,mobile,city,street,province,zip,asdefAddress)
-       const Address={
-        "country name":countryName ,
-        "contactName":contactName ,
-        "mobile" : mobile ,
-        "street" : street ,
-        "province" :province ,
-        "zip" : zip,
+const token =Cookies.get('token');
+       const config={
+           headers:{
+            Authorization :`Bearer ${token}`,
+           }}
+       try{
+
+        const res= await axios.post(addAddressRoute,{
+          contactName,country:countryName,
+          mobile,city,street,province,zipcode:zip,asdefAddress
+        },config)
+
+        console.log(res);
+        if(res.data){
+          setAddress(res.data.addres);
+          navigate('/Order');
+        }
+       }catch(err){
+        console.log(err);
        }
        setAddress(Address) ;
-       localStorage.setItem("ad","ad");
-       navigate('/Order');
     }
 
      

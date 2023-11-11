@@ -5,12 +5,24 @@ import { useNavigate } from 'react-router-dom';
 import {BsFillCartFill } from "react-icons/bs" 
 import {AiFillCaretRight ,AiFillDelete} from "react-icons/ai"
 import NavBar from './NavBar';
+import axios from 'axios'
+import {getcardRoute} from '../RoutersApi/ApiRoutes'
+import cookies from 'js-cookie'
 
  function CardItems() {
- const {setProductDetails,allProduct} =EcoState();
+ const {setProductDetails,userToken,setDataToBay} =EcoState();
  const[total,setTotal] =useState(0);
  const[dataIncart,setDataIncart]=useState([]) ;
- const navigate =useNavigate();
+ const navigate =useNavigate(); 
+
+  
+ useEffect(()=>{
+   const token=cookies.get('token');
+   if(!userToken&&!token){
+    navigate('/login');
+    
+   }
+ },[])
   
      const OnDetailes =(product)=>{
      setProductDetails(product) ;
@@ -26,13 +38,34 @@ import NavBar from './NavBar';
         })
         setTotal(t.toFixed(2)) ;
      }
-      useEffect(()=>{ 
-         console.log("data in cart changed ")
+    useEffect(()=>{ 
          if(dataIncart)     
            addToTotal() ;
-      },[dataIncart])
+      },[dataIncart]);
+
+
 useEffect(()=>{
-     setDataIncart(allProduct) ;
+     const getDataCard=async()=>{
+        const config={
+           headers:{
+            Authorization :`Bearer ${userToken}`,
+           }
+         }
+       if(userToken){
+       try{
+        const res= await axios.get(getcardRoute,config);
+
+        if(res.data){
+        const products = res.data[0].products;
+        const productIds = products.map((ps) => ps.product);
+         setDataIncart(productIds);
+        }
+       }catch(err){
+        console.log(err);
+       }
+      }
+     }
+     getDataCard();
     },[]) ;
        
     const onDeletFromCart=(i)=>{ 
@@ -45,9 +78,10 @@ useEffect(()=>{
          })
        );
       }
-      const OnBuy=()=>{
-        navigate("/address");
-      }
+    const OnBuy=()=>{
+      setDataToBay(dataIncart);
+    navigate("/Address") ;
+   }
 
  return (
     <div className='max-w-[1640px] mx-auto p-4 mt-10'>
