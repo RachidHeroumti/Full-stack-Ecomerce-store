@@ -10,18 +10,20 @@ export  const CreateOrAddTocart=async(req,res)=>{
           if(cart){
     //if card already exist add product to this cart  
         const pr=cart.products.find((i)=>i.product==product) ;
-
          
           if(!pr){
-            await Cart.findOneAndUpdate({
+            try{
+          const addedPr=  await Cart.findOneAndUpdate({user:req.user._id},{
                $push: {
         products: {
            product: product,
-           quantity: quantity
-        }
-      }
-            })
-            res.status(200).json({message:"product added to cart successfuly !"});
+           quantity: quantity } }
+            }) ;
+
+    res.status(200).json({addedPr});
+          }catch(err){
+            console.log(err) ;
+          }
           }else{
             //change quntity ;
             //  await Cart.findOneAndUpdate({
@@ -45,6 +47,7 @@ export  const CreateOrAddTocart=async(req,res)=>{
     console.log(err) ;
   }
 }
+
 export const deleteFromCart=async(req,res)=>{
 
 }
@@ -52,8 +55,11 @@ export const deleteFromCart=async(req,res)=>{
 export const getItemsInCart=async(req,res)=>{
 
    try{
- const product = await Cart.find({ user: req.user._id }).populate('products.product');
-   res.status(200).json(product);
+const productsInCart = await Cart.find({ user: req.user._id })
+     .populate('products.product')
+    // .lean();
+
+   res.status(200).json(productsInCart);
 
    }catch(err){
     console.log(err);

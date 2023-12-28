@@ -12,7 +12,7 @@ import Order from './Compoanent/Order'
 
 function App() {
  const { productDetails } =EcoState()
- const {address} =EcoState()
+ const {address,dataToBay} =EcoState()
 
   return (
   <BrowserRouter>
@@ -23,7 +23,7 @@ function App() {
      <Route path='/details' element={<Details product={productDetails}/>}/>
      <Route path='/cart' element={ <CartItems/>} />
      <Route path='/Address' element={ <Address/>} />
-     <Route path='/Order' element={<Order addressInfo={address}/>}></Route>
+     <Route path='/Order' element={<Order addressInfo={address} />}></Route>
     
    </Routes>
   </BrowserRouter>

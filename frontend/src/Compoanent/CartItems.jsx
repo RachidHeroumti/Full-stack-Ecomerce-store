@@ -1,5 +1,4 @@
  import React, { useEffect, useState } from 'react'
-  import {products} from "../data/data"
 import { EcoState } from '../Context/EcoProvider';
 import { useNavigate } from 'react-router-dom';
 import {BsFillCartFill } from "react-icons/bs" 
@@ -23,12 +22,36 @@ import cookies from 'js-cookie'
     
    }
  },[])
+ //get products 
+useEffect(()=>{
+     const getDataCard=async()=>{
+        const config={
+           headers:{
+            Authorization :`Bearer ${userToken}`,
+           }
+         }
+       if(userToken){
+       try{
+        const res= await axios.get(getcardRoute,config);
+    console.log("products in card",res)
+        if(res.data){
+        const products = res.data[0].products;
+        const productIds = products.map((ps) => ps.product);
+         setDataIncart(productIds);
+        }
+       }catch(err){
+        console.log(err);
+       }
+      }
+     }
+     getDataCard();
+    },[]) ;
   
-     const OnDetailes =(product)=>{
+ const OnDetailes =(product)=>{
      setProductDetails(product) ;
       navigate("/details");
      }
-      const addToTotal =()=>{
+  const addToTotal =()=>{
               let t=0;
             dataIncart.map((item,i)=>{
              const price = parseFloat(item.price); 
@@ -44,40 +67,18 @@ import cookies from 'js-cookie'
       },[dataIncart]);
 
 
-useEffect(()=>{
-     const getDataCard=async()=>{
-        const config={
-           headers:{
-            Authorization :`Bearer ${userToken}`,
-           }
-         }
-       if(userToken){
-       try{
-        const res= await axios.get(getcardRoute,config);
-
-        if(res.data){
-        const products = res.data[0].products;
-        const productIds = products.map((ps) => ps.product);
-         setDataIncart(productIds);
-        }
-       }catch(err){
-        console.log(err);
-       }
-      }
-     }
-     getDataCard();
-    },[]) ;
        
     const onDeletFromCart=(i)=>{ 
         const productsCopy =dataIncart;
       const deletedItem = productsCopy.splice(i+1,0);
-        console.log(" pr copy : ",productsCopy); 
        setDataIncart(
          productsCopy.filter((item)=>{
           return item.title!=i.title ;
          })
        );
       }
+
+      // for buy
     const OnBuy=()=>{
       setDataToBay(dataIncart);
     navigate("/Address") ;
@@ -100,12 +101,12 @@ useEffect(()=>{
            </div>
            <div className='flex flex-row justify-between mx-5'>
               <button  onClick={()=>{onDeletFromCart(product)}}
-                className='flex items-center bg-gradient-to-tr from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1'>
-                  <AiFillDelete  className='mx-1'/>
+                className='flex items-center rounded-full text-center px-3 py-1 text-black my-1'>
+                  <AiFillDelete size={30} className='mx-1'/>
                   </button>
                          <button onClick={()=>{OnDetailes(product)}}
                            className='flex items-center bg-gradient-to-tr from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1'>
-                  <AiFillCaretRight  className='mx-1'/>
+                  <AiFillCaretRight size={25}  className='mx-1'/>
                 Details</button>
            </div>
         
@@ -120,7 +121,7 @@ useEffect(()=>{
      <h1 className='text-xl font-semibold '>SubTotal <span> ({dataIncart.length} item)</span></h1>
      <h2 className=' text-orange-600 text-xl font-bold m-1'>{total}<span>$$</span></h2>
       <button  onClick={()=>{OnBuy()}}
-         className=' w-full text-center bg-yellow-500 rounded-xl  px-3 py-1 text-black'>
+         className=' w-full text-center bg-yellow-500 rounded-xl  px-3 py-1 text-black hover:bg-yellow-600'>
                  Buy Now</button>
    </div>
     </div>

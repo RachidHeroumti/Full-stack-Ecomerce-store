@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { countyCode } from '../data/data'
-import Order from './Order'
 import { useNavigate } from 'react-router-dom'
 import {ToastContainer,toast} from "react-toastify"
 import {EcoState} from "../Context/EcoProvider"
@@ -43,27 +42,23 @@ const[asdefAddress,setAsdefAdress]=useState(true) ;
        toast.error("some fields are empty !",toastOptions)
     }
     else {
-const token =Cookies.get('token');
        const config={
            headers:{
-            Authorization :`Bearer ${token}`,
+            Authorization :`Bearer ${userToken}`,
            }}
        try{
-
         const res= await axios.post(addAddressRoute,{
           contactName,country:countryName,
           mobile,city,street,province,zipcode:zip,asdefAddress
-        },config)
-
-        console.log(res);
+        },config);
         if(res.data){
-          setAddress(res.data.addres);
-          navigate('/Order');
+          setAddress(res.data.address);
+        navigate('/Order');
         }
        }catch(err){
         console.log(err);
        }
-       setAddress(Address) ;
+
     }
 
      
@@ -157,7 +152,7 @@ const setCodeCountry = (name) => {
         className="mx-2 w-6 h-6 text-indigo-600"
         id="myCheckbox"
         name="myCheckbox"
-        defaultChecked
+        value={asdefAddress}
         onChange={(e)=>{setAsdefAdress(e.target.value)}}
       />
           </div>

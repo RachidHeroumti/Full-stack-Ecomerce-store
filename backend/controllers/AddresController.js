@@ -5,9 +5,7 @@ export const Addaddress=async(req,res)=>{
            ,isdefault}=req.body;
 
      try{
-      let address= await Address.findOne({user:req.user._id});
-       if(!address){
-         address=new Address({
+        const address=new Address({
             user:req.user._id,
             contactName,country,mobile,city,
             street,province,zipcode,isdefault
@@ -15,8 +13,6 @@ export const Addaddress=async(req,res)=>{
 
          await address.save();
          res.status(200).json({address});
-       }
-
      }catch(err){
       console.log(err);
      }

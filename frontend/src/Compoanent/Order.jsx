@@ -2,19 +2,35 @@ import React, { useEffect, useState } from 'react'
 import {AiFillDelete } from 'react-icons/ai'
 import{ FaCcVisa ,FaPaypal} from 'react-icons/fa'
 import{ FaCcMastercard} from 'react-icons/fa6'
-
-import { products} from "../data/data"
+import {ToastContainer,toast} from "react-toastify"
 import { EcoState } from '../Context/EcoProvider'
+import { useNavigate } from 'react-router-dom'
 
 
 function Order({addressInfo}) {
   const[istoPay,setIstopPay] =useState(false) ;
   const[tolat,setTotal] =useState(1);
-  const {dataToBay}=EcoState();
+ const {dataToBay,setDataToBay} =EcoState();
 
-        const addToTotal =()=>{
+  const navigate=useNavigate();
+     const toastOptions = {
+    position: "bottom-right",
+    autoClose: 3000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  const OrderNow=async()=>{
+     toast.success("order succes",toastOptions);
+      navigate("/")
+  }
+  useEffect(()=>{
+    console.log("data comes to buy : ",dataToBay);
+  },[dataToBay]);
+    const addToTotal =()=>{
               let t=0;
-            products.map((item,i)=>{
+            dataToBay.map((item,i)=>{
              const price = parseFloat(item.price); 
           if (!isNaN(price)) {
               t += price;
@@ -22,15 +38,23 @@ function Order({addressInfo}) {
         })
         setTotal(t) ;
      }   
-     useEffect(()=>{
+
+  useEffect(()=>{
       addToTotal();
      },[]) ;
 
-     const onDelet=()=>{
-      // delet item
-     }
+     const onDeletFromOrder=(i)=>{ 
+       console.log(i);
+    const productsCopy =dataToBay;
+      const deletedItem = productsCopy.splice(i+1,0);
+       setDataToBay(
+         productsCopy.filter((item)=>{
+          return item.title!=i.title ;
+         })
+       );
+      }
 
-   console.log("Address info :",addressInfo)
+
   return (
     <div className='max-h-[1640] p-4 mb-12'>
         <h1 className='text-3xl font-bold p-5 flex justify-center'>Order Confirmation</h1>
@@ -48,18 +72,17 @@ function Order({addressInfo}) {
         </div>
   <div className='grid gap-5'>
 
-      {dataToBay&&dataToBay.map((item,i)=>{
+      {dataToBay && dataToBay.map((item,i)=>{
   return ( <div className='rounded bg-gray-100' key={i}>
          <div className='flex flex-row p-4'>
           <img className='rounded-lg h-[150px] w-[100px] '
              src={item.image}alt='' />
           <div className='px-3'>
-            <h1 className='text-xl font-semibold py-1'>{item.name} </h1>
-            <h1 className=''>some detailes </h1>
+            <h1 className='text-xl font-semibold py-1'>{item.title} </h1>
             <h1 className='text-2xl font-bold text-orange-600 py-1'>{item.price} <span>$</span></h1>
              <div className='flex flex-row'>
-            <AiFillDelete size={25} className='mx-1'/>
-            <input type='number'  defaultValue={3}
+            <AiFillDelete size={25} className='mx-1' onClick={()=>{onDeletFromOrder(item)}}/>
+            <input type='number'  defaultValue={1}
                className=' outline-none bg-gray-200 mx-2 px-2 rounded-xl text-center' min={1} max={10}/>
           </div>
           </div>
@@ -73,8 +96,11 @@ function Order({addressInfo}) {
     </div>  
     <div className=' fixed bottom-0 left-0 bg-white w-full flex  p-5 justify-between flex-col md:flex-row'>
       <h1 className='text-2xl font-bold px-10 w-full'>Total  :  <span className=' text-orange-600'>{tolat} $</span></h1>
-      <button className=' w-full text-center py-1 rounded-full bg-orange-500 text-white text-xl font-bold'>Order Now</button>
+      <button className=' w-full text-center py-1 rounded-full bg-orange-500 text-white text-xl font-bold'
+         onClick={()=>{OrderNow()}}
+         >Order Now</button>
     </div>
+    <ToastContainer/>
     {/** To add card */}
   {istoPay ? <div className='fixed h-screen w-full bg-black/80 top-0 left-0 z-10'>
   </div>:""}

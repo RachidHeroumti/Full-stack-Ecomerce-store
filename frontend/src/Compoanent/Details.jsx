@@ -1,14 +1,17 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {BsFillCartFill } from "react-icons/bs"
 import { useNavigate } from 'react-router-dom';
 import {ToastContainer, toast } from 'react-toastify' 
 import {AddcardRoute} from '../RoutersApi/ApiRoutes'
+import { EcoState } from '../Context/EcoProvider';
 
 function Details({product}) {
    const [quantity, setQuantity] = useState(1);
    const navigate=useNavigate() ;
    const [imagePr,setImagePr]=useState(product.image)
+   const {setDataToBay,dataToBay} =EcoState()
+
   const toastOptions = {
     position: "bottom-right",
     autoClose: 500,
@@ -44,41 +47,43 @@ function Details({product}) {
     setQuantity(newValue);
   };
  
-   const OnBuy=()=>{
-    const ad=localStorage.getItem("ad") ;
-    if(!ad)
-    navigate("/Address") ;
-   else
-    navigate('/order')
-   }
+const OnBuy = (pr) => {
+  const arr = [];
+  arr.push(pr);
+  setDataToBay(arr);
+  console.log(dataToBay);
+  navigate("/order");
+};
+
+
 
   return (
     <div className='max-w-[1640] py-3'>
-      <div className='lg:flex lg:items-center '>
-        <div className='lg:w-[400px] flex m-2  flex-col'>
+      <div className='lg:flex   flex-row'>
+        <div className='lg:w-[500px] flex m-2  flex-col'>
                <img src={imagePr} alt='' 
                  className='w-full h-[350px] object-cover'/>
                 <div className='flex items-center p-2'>
                    <img src={product.images[0]} alt=''
                      onClick={()=>{setImagePr(product.images[0])}} 
-                       className='h-[100px] w-[75px] px-1'/>
+                       className='h-[125px] w-[100px] px-1'/>
                    <img src={product.images[1]} alt=''
                           onClick={()=>{setImagePr(product.images[1])}}  
-                       className='h-[100px] w-[75px] px-1'/>  
+                       className='h-[125px] w-[100px] px-1'/>  
                    <img src={product.images[2]} alt=''
                          onClick={()=>{setImagePr(product.images[2])}}  
-                       className='h-[100px] w-[75px] px-1'/>  
+                       className='h-[125px] w-[100px] px-1'/>  
                    <img src={product.images[3]} alt='' 
                           onClick={()=>{setImagePr(product.images[3])}} 
-                       className='h-[100px] w-[75px] px-1'/>         
+                       className='h-[125px] w-[100px] px-1'/>         
                  </div>
         </div>
    
-        <div className='flex flex-col w-full'>
+        <div className='w-full p-4'>
           <h2 className=' text-3xl font-bold text-gray-950 '>{product.title}</h2>
           <h1 className=' text-xl text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
           <div className='items-center flex flex-row '>
-               <button onClick={()=>{OnBuy()}}
+               <button onClick={()=>{OnBuy(product)}}
                 className='flex items-center bg-orange-500 rounded-full text-center px-3 py-1 text-black m-5'>
                   
                  Buy Now</button>
@@ -88,8 +93,8 @@ function Details({product}) {
                onChange={handleQuantityChange} 
       />
                  </div>
-              
-          <p className='text-gray-900 p-2 text-xl'>
+             
+          <p className='text-gray-900 p-2 text-2xl tracking-wider pe-12'>
             {product.description}
           </p>
         </div>
