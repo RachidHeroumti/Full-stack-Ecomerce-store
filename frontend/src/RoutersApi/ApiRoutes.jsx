@@ -17,10 +17,10 @@ export const UpdatePrRoute = `${host}/product`;//
 export const getCategory = `${host}/category/`;//GET
 export const CreateCategoryRoute = `${host}/categories/`;
 export const getOneCategory = `${host}/category/`; //with : id
-//
+//cart
 export const AddcardRoute = `${host}/cart/add-create`;
 export const getcardRoute = `${host}/cart/get`;
-export const deletFromCardRoute = `${host}/cart/delete/`;//POST with : id
+export const deletFromCardRoute = `${host}/cart/delete`;//POST with : id
 
 export const addOrderRoute = `${host}/order/add-order/`;//POST
 export const getOrdersRoute = `${host}/order/get-orders/`;//GET

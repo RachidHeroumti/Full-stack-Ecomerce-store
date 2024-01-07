@@ -1,72 +1,74 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {ToastContainer,toast} from 'react-toastify'
-import {loginRoute} from '../RoutersApi/ApiRoutes'
+import { ToastContainer, toast } from 'react-toastify'
+import { loginRoute } from '../RoutersApi/ApiRoutes'
 import axios from 'axios'
 import cookies from 'js-cookie'
+import { EcoState } from '../Context/EcoProvider'
 
 
 function Login() {
-  const[email,setEmail] =useState("");
-  const[password ,setPassword] =useState("") ;
-  const navigate=useNavigate();
-  const toastOption={
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { setUserToken } = EcoState()
+
+  const toastOption = {
     position: "bottom-right",
     autoClose: 3000,
     pauseOnHover: true,
     draggable: true,
     theme: "dark",
   };
-  const OnLogin=async()=>{
+  const OnLogin = async () => {
     //
-    if(!email||!password){
-       toast.error("Some fields is Empty !",toastOption) ;
-       return ;
+    if (!email || !password) {
+      toast.error("Some fields is Empty !", toastOption);
+      return;
     }
-    try{
-      const res= await axios.post(loginRoute,{email,password});
+    try {
+      const res = await axios.post(loginRoute, { email, password });
+      if (res.data.id) {
+        const token = res.data.token;
+        cookies.set('token', token, { expires: 30 });
+        setUserToken(token);
+        navigate('/cart');
+      }
 
-      if(res.data.id){
-      
-      const token=res.data.token ;
-       cookies.set('token', token, { expires: 7 });
-          navigate('/');
-        }
-
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
 
   return (
     <div className='max-w-[1640] p-4 flex justify-center py-12'>
-       <div className='w-[400px] p-5 bg-gray-50 shadow-lg rounded-md '>
-          <h1 className='text-2xl font-semibold text-gray-900 p-2'> Log in</h1>
-          <div>
-           <input  onChange={(e)=>{setEmail(e.target.value)}}
-                   value={email}
+      <div className='w-[400px] p-5 bg-gray-50 shadow-lg rounded-md '>
+        <h1 className='text-2xl font-semibold text-gray-900 p-2'> Log in</h1>
+        <div>
+          <input onChange={(e) => { setEmail(e.target.value) }}
+            value={email}
             className='bg-gray-200 w-full outline-none px-3 py-1 rounded-md m-1'
             type='email' placeholder='Email' />
 
-           <input onChange={(e)=>{setPassword(e.target.value)}}
-                   value={password}
+          <input onChange={(e) => { setPassword(e.target.value) }}
+            value={password}
             className='bg-gray-200 w-full outline-none px-3 py-1 rounded-md m-1'
-             type='password' placeholder='Password' />
-           
-    <button onClick={()=>{OnLogin()}}
-        className='rounded-full w-full text-center font-bold mt-2 bg-gray-400 hover:bg-gray-500 hover:text-white  p-1'>
-            Log in
-           </button>
-           <div className='flex items-center justify-end py-2'>
-      <span>
-            you don't have account  ? <Link to="/register" 
-                 className=' px-2 text-cyan-900  font-bold'>Register</Link>
-          </span>
-           </div>
+            type='password' placeholder='Password' />
 
+          <button onClick={() => { OnLogin() }}
+            className='rounded-full w-full text-center font-bold mt-2 bg-gray-400 hover:bg-gray-500 hover:text-white  p-1'>
+            Log in
+          </button>
+          <div className='flex items-center justify-end py-2'>
+            <span>
+              you don't have account  ? <Link to="/register"
+                className=' px-2 text-cyan-900  font-bold'>Register</Link>
+            </span>
           </div>
-       </div>
-       <ToastContainer/>
+
+        </div>
+      </div>
+      <ToastContainer />
     </div>
   )
 }

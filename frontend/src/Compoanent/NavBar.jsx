@@ -94,7 +94,9 @@ function NavBar() {
                <h1 className='text-gray-800 pt-3 font-bold text-xl'>Categories</h1>
                {
                   category.map((item, i) => {
-                     return (<div key={i} className='text-xl text-gray-500 flex justify-between items-center  py-2'><p>{item}</p> <AiFillCaretRight /></div>)
+                     return (<div key={i} className='text-xl text-gray-500 flex justify-between items-center hover:text-gray-800  py-2'
+                        onClick={() => { onSetCategory(item.name) }}>
+                        <p>{item}</p> <AiFillCaretRight /></div>)
                   })
                }
 
