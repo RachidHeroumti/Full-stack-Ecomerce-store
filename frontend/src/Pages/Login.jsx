@@ -26,6 +26,14 @@ function Login() {
       toast.error("Some fields is Empty !", toastOption);
       return;
     }
+    //check email 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Check if the entered email matches the email format
+    const isValidEmail = emailRegex.test(email);
+    if (!isValidEmail) {
+      toast.error("Please enter a valid email!", toastOption);
+      return;
+    }
     try {
       const res = await axios.post(loginRoute, { email, password });
       if (res.data.id) {

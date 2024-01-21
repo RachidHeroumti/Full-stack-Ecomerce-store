@@ -26,6 +26,14 @@ function Register() {
       toast.error("Some fields is Empty !", toastOption);
       return;
     }
+    //check email 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Check if the entered email matches the email format
+    const isValidEmail = emailRegex.test(email);
+    if (!isValidEmail) {
+      toast.error("Please enter a valid email!!", toastOption);
+      return false;
+    }
     if (username.length <= 3) {
       toast.error("name must be longer!", toastOption);
       return;
