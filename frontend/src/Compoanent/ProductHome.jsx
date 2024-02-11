@@ -82,13 +82,13 @@ function ProductHome() {
                 <h2 className=' text-xl font-light font-semibold'>{product.title}</h2>
                 <h2 className='text-xl font-bold text-orange-600'> {product.price}<span> $$</span></h2>
               </div>
-              <div className='flex flex-col p-2'>
+              <div className='flex flex-col p-2 justify-end'>
                 <button onClick={() => { AddToCart(product) }}
-                  className='flex items-center bg-gradient-to-tr from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1 hover:bg-slate-500'>
+                  className='flex items-center  bg-gray-300 hover:bg-gray-400  rounded-full text-center px-3 py-1 text-black my-1 font-semibold'>
                   <BsFillCartFill className='mx-1' />
                   Add to cart</button>
                 <button onClick={() => { OnDetailes(product) }}
-                  className='flex items-center bg-gradient-to-tr  from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1 hover:bg-slate-500'>
+                  className='flex items-center  bg-gray-300 hover:bg-gray-400 rounded-full text-center px-3 py-1 text-black my-1 hover'>
                   <AiFillCaretRight className='mx-1' />
                   Details</button>
 
