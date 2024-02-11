@@ -1,68 +1,30 @@
 
-export  const products=[
+export const products = [
 
-  { 
-   name:"Trendy Queen Womens" ,
-   price : "22.23" ,
-   category : "Apparel and accessorie" ,
-      images:["","","","",""],
-   image :"https://images.pexels.com/photos/2850487/pexels-photo-2850487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-  },
-   {
-     name:"Fronage Women's" ,
-     price : "19.00" ,
-     category : "Apparel and accessorie" ,
-        images:["","","","",""],
-     image :"https://images.pexels.com/photos/803942/pexels-photo-803942.jpeg?auto=compress&cs=tinysrgb&w=300"
-  } ,
-  {
-    name:"Dokotoo Womens 2023" ,
-    price : "31.17" ,
-    category : "Apparel and accessorie" ,
-       images:["","","","",""],
-    image :"https://images.pexels.com/photos/4057673/pexels-photo-4057673.jpeg?auto=compress&cs=tinysrgb&w=300"
-  } ,
-   {
-     name:"Aloodor Sweatsuit for Women" ,
-     price : "17.39" ,
-     category : "Apparel and accessorie" ,
-        images:["","","","",""],
-     image :"https://images.pexels.com/photos/4374510/pexels-photo-4374510.jpeg?auto=compress&cs=tinysrgb&w=300"
-  } ,
-   {
-   name:"Laptop Computer, Quad-Core Intel N95 Processor 16GB" ,
-   price : "73.00" ,
-   category : "Consumer electronics" ,
-      images:["","","","",""],
-   image :"https://images.pexels.com/photos/38568/apple-imac-ipad-workplace-38568.jpeg?auto=compress&cs=tinysrgb&w=300"
-  } ,
-   {
-   name:"HP 2023 Newest 14 Laptop for Productivity" ,
-   price : "84.49" ,
-   category : "Consumer electronics" ,
-   images:["","","","",""],
-   image :"https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=300"
-  } ,
-   {
-   name:"Nokia C21 Plus" ,
-   price : "49.98" ,
-   category : "Consumer electronics" ,
-      images:["","","","",""],
-   image :"https://images.pexels.com/photos/3999536/pexels-photo-3999536.jpeg?auto=compress&cs=tinysrgb&w=300"
-  },
-  {
-   name:"SAMSUNG Galaxy A14 " ,
-   price : "62.96" ,
-   category : "Consumer electronics" ,
-      images:["","","","",""],
-   image :"https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=300"
-  }
+  { _id: '65398587b4499a96586fd872', title: 'Smartphone XYZ', description: 'A high-quality smartphone with advanced features.', price: '499.99', image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=300', }
+  ,
+  { _id: '653ae29e860372b6b5d8cf25', title: 'Smartphone ABC', description: 'A high-quality smartphoneABC with advanced features.', price: '499.99', image: 'https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=300', }
+  ,
+  { _id: '654d4a545dfeb3a86b2ac0f0', title: 'Student Chromebook 2023', description: 'A high-quality laptop  with advanced features Space-saving all-in-one PC for home and office use', price: '1288', image: 'https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&w=300', }
+  ,
+  { _id: '654d4c445dfeb3a86b2ac0f9', title: 'Multimedia Laptop 2024', description: 'The Laptop Computer from ABC Electronics is the pe…way to productivity, creativity, and portability.', price: '1288', image: 'https://images.pexels.com/photos/38568/apple-imac-…kplace-38568.jpeg?auto=compress&cs=tinysrgb&w=300', }
+  ,
+  { _id: '654d533d4f81a378b594e4fd', title: "Designer's Dream Machine", description: "The All-in-One PC by Tech Master is designed for h… it's the ideal choice for streamlined computing.", price: '2590', image: 'https://images.pexels.com/photos/1779487/pexels-ph…jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', }
+  ,
+  { _id: '654d54344f81a378b594e502', title: 'Compact Mini PC', description: "The UltraBook Pro is the pinnacle of modern comput…S, it's a statement of elegance and productivity.", price: '2680', image: 'https://images.pexels.com/photos/109371/pexels-photo-109371.jpeg?auto=compress&cs=tinysrgb&w=300', }
+  ,
+  { _id: '654d55a94f81a378b594e507', title: 'Wireless Earbuds - SoundMasters Pro', description: 'Introducing the SoundMasters Pro, the pinnacle of …the perfect companions for your active lifestyle.', price: '322', image: 'https://images.pexels.com/photos/18966453/pexels-p…ming-headset.jpeg?auto=compress&cs=tinysrgb&w=300', }
+  ,
+  { _id: '654d5afa4c569ffe06553381', title: '4K Video Recording', description: "Create cinematic 4K videos with precise details an…lmmaking, and capturing life's memorable moments.", price: '3750', image: 'https://images.pexels.com/photos/51383/photo-camer…rapher-51383.jpeg?auto=compress&cs=tinysrgb&w=300' }
+  ,
+  { _id: '654d5d0dd434bcef0c4c587d', title: 'SkyRover X5 Pro', description: 'The SkyRover Viper X5 Pro Drone is the ultimate to…ever before with the SkyRover Viper X5 Pro Drone.', price: '5990', image: 'https://media.istockphoto.com/id/911190112/photo/q…20&c=VruaSlAjQYNyj609jcn_Lyeztq9Bj9BuhgVnZ2JtRoU=', }
+
 ]
 
-export const categories={
+export const categories = {
 
 }
-export const countyCode=[
+export const countyCode = [
   {
     "name": "Afghanistan",
     "code": "+93"
@@ -249,15 +211,15 @@ export const countyCode=[
   },
   {
     "name": "Dominican Republic",
-  "code": "+1"
+    "code": "+1"
   },
   {
     "name": "East Timor",
-  "code": "+670"
+    "code": "+670"
   },
   {
     "name": "Ecuador",
-  "code": "+593"
+    "code": "+593"
   },
   {
     "name": "Egypt",
@@ -273,19 +235,19 @@ export const countyCode=[
   },
   {
     "name": "Eritrea",
-  "code": "+291"
+    "code": "+291"
   },
   {
     "name": "Estonia",
-  "code": "+372"
+    "code": "+372"
   },
   {
     "name": "Eswatini",
-  "code": "+268"
+    "code": "+268"
   },
   {
     "name": "Ethiopia",
-  "code": "+251"
+    "code": "+251"
   },
   {
     "name": "Fiji",
@@ -301,15 +263,15 @@ export const countyCode=[
   },
   {
     "name": "Gabon",
-  "code": "+241"
+    "code": "+241"
   },
   {
     "name": "Gambia",
-  "code": "+220"
+    "code": "+220"
   },
   {
     "name": "Georgia",
-  "code": "+995"
+    "code": "+995"
   },
   {
     "name": "Germany",
@@ -321,7 +283,7 @@ export const countyCode=[
   },
   {
     "name": "Greece",
-  "code": "+30"
+    "code": "+30"
   },
   {
     "name": "Grenada",
@@ -329,7 +291,7 @@ export const countyCode=[
   },
   {
     "name": "Guatemala",
-  "code": "+502"
+    "code": "+502"
   },
   {
     "name": "Guinea",
@@ -345,7 +307,7 @@ export const countyCode=[
   },
   {
     "name": "Haiti",
-  "code": "+509"
+    "code": "+509"
   },
   {
     "name": "Honduras",
@@ -836,7 +798,7 @@ export const countyCode=[
     "code": "+263"
   }
 ]
-export const countries =[
+export const countries = [
   "Afghanistan",
   "Albania",
   "Algeria",
