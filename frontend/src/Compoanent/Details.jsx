@@ -87,8 +87,8 @@ function Details({ product }) {
 
 
           <div className='w-[70%]'>
-            <h2 className=' text-3xl font-bold text-gray-950 '>{product.title}</h2>
-            <h1 className=' text-xl text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
+            <h2 className=' text-4xl font-bold text-gray-950 pb-2 px-2 '>{product.title}</h2>
+            <h1 className=' text-3xl p-1 text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
             <p className='text-gray-900 p-2 text-2xl tracking-wider pe-12'>
               {product.description}
             </p>
@@ -96,7 +96,7 @@ function Details({ product }) {
 
           <div className=' w-[30%] flex flex-col p-2 border rounded-sm m-2 border-1 border-gray-600 '>
 
-            <h1 className=' text-2xl text-gray-700'>Quantity :</h1>
+            <h1 className=' text-2xl text-gray-700 p-1'>Quantity </h1>
             <input type="number"
               className="outline-none bg-gray-100 rounded text-center text-xl my-1
                     font-bold py-2 px-3" max={10} min={1}
@@ -104,13 +104,15 @@ function Details({ product }) {
               onChange={handleQuantityChange}
             />
 
+            <h1 className='py-2 text-xl my-2'>- 7697 Pieces available</h1>
+
             <button onClick={() => { OnBuy(product) }}
               className='  bg-orange-500 hover:bg-orange-600 rounded-lg text-center  py-2 text-white  text-xl font-black my-1'>
               Buy Now</button>
 
             <button onClick={() => { AddToCart() }}
-              className='flex items-center justify-center text-2xl p-1 my-1 border border-orange-500
-                     font-bold bg-white hover:bg-orange-50   text-orange-500 rounded-lg text-center  '>
+              className='flex items-center justify-center text-3xl p-1 my-1 border border-orange-500
+                     font-bold bg-white hover:bg-orange-100   text-orange-700 rounded-lg text-center  '>
               <BsFillCartFill className='mx-1 ' />
               +</button>
 
