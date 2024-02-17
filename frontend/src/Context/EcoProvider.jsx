@@ -14,9 +14,10 @@ function EcoProvider({ children }) {
   const [dataToBay, setDataToBay] = useState([]);
 
   useEffect(() => {
+
     setSearchData(products);
 
-    if (allProduct) {
+    if (allProduct.length > 1) {
       setSearchData(allProduct);
     }
   }, [allProduct])
