@@ -4,7 +4,7 @@ function Hero() {
 
   return (
 
-    <div className='max-w-[1640px] mx-auto h-[600px] bg-emerald-800'>
+    <div className='max-w-[1640px] mx-auto h-[600px] bg-emerald-800' id='home'>
       <div className='flex items-center'>
 
         <div className='w-full h-[600px] flex p-12 flex-col justify-center '>

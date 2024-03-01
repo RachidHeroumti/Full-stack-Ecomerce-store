@@ -2,7 +2,7 @@ import React from 'react'
 
 function bFooter() {
   return (
-    <div className='  p-5' id='contatct'>
+    <div className='  p-5' id='about'>
       <div className='flex flex-col lg:flex-row rounded-lg'>
         <div className=' bg-gradient-to-t from-emerald-800 to-emerald-500 rounded-r-none  w-full py-10 p-5 rounded-lg '>
           <h1 className='text-xl font-bold '>

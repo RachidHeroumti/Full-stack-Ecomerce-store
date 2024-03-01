@@ -50,8 +50,9 @@ function NavBar() {
       setNav(false);
    }
 
-   return (
 
+
+   return (
       <div className=' flex justify-between p-3  fixed start-0 top-0 end-0  z-10 
         bg-emerald-800 w-full'>
          <div className=' flex items-center py-2'>
@@ -67,7 +68,7 @@ function NavBar() {
                type='text' className='outline-none bg-transparent'
                placeholder='Search for product' />
          </div>
-         <div className='text-gray-300 flex px-5 items-center' id='home'>
+         <div className='text-gray-300 flex px-2 items-center'>
             <div className=' hidden md:flex items-center'>
                <a href='#home' className='text-xl hover:border-b-8 mx-5 border-b-yellow-600  rounded-lg 
                hover:text-white  text-center' >Home</a>
@@ -82,7 +83,7 @@ function NavBar() {
 
             <button onClick={() => { goToCart(); }}
                className=' hover:border-b-yellow-600  rounded-lg 
-               text-xl hover:border-b-8 mx-1 sm:mx-5 border-b-yellow-600 
+               text-xl hover:border-b-8 mx-2 border-b-yellow-600 
                hover:text-white  text-center
                 px-3 md:flex items-center'>
                <span className='md:flex hidden'>Cart</span><BsFillCartFill size={20} className='mx-2' />

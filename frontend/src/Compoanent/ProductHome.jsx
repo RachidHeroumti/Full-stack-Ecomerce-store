@@ -71,7 +71,7 @@ function ProductHome() {
 
   return (
     <div className='max-w-[1640px] mx-auto p-4'>
-      <div className=' grid lg:grid-cols-4 md:grid-cols-2 gap-6'>
+      <div className=' grid lg:grid-cols-4 md:grid-cols-2 gap-6' id='shop'>
 
         {searchdata.map((product, i) => {
           return (
