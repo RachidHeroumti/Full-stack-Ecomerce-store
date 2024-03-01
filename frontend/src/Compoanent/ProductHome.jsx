@@ -75,23 +75,28 @@ function ProductHome() {
 
         {searchdata.map((product, i) => {
           return (
-            <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 '>
+            <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 bg-emerald-800
+               text-white '>
               <img src={product.image} alt=''
                 className='rounded-lg  w-full h-[250px] ' />
-              <div className='px-1'>
-                <h2 className=' text-xl font-light font-semibold'>{product.title}</h2>
-                <h2 className='text-xl font-bold text-orange-600'> {product.price}<span> $$</span></h2>
+              <div className='p-3'>
+                <h2 className=' text-2xl  font-semibold h-[60px]'>{product.title}</h2>
+                <h2 className='text-xl xl:text-2xl font-bold text-yellow-400'> {product.price}<span> $$</span></h2>
+                <p className=" text-gray-300" >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Ut id iure blanditiis, quasi eos porro, natus ex omnis enim,
+                </p>
               </div>
-              <div className='flex flex-col p-2 justify-end'>
-                <button onClick={() => { AddToCart(product) }}
-                  className='flex items-center  bg-gray-300 hover:bg-gray-400  rounded-full text-center px-3 py-1 text-black my-1 font-semibold'>
-                  <BsFillCartFill className='mx-1' />
-                  Add to cart</button>
-                <button onClick={() => { OnDetailes(product) }}
-                  className='flex items-center  bg-gray-300 hover:bg-gray-400 rounded-full text-center px-3 py-1 text-black my-1 hover'>
-                  <AiFillCaretRight className='mx-1' />
-                  Details</button>
-
+              <div className=' p-2 w-full '>
+                <div className=" flex justify-between text-black text-xl xl:text-2xl my-2  ">
+                  <button onClick={() => { OnDetailes(product) }}
+                    className='flex items-center  bg-yellow-400 hover:bg-yellow-500 rounded-full text-center px-3 py-1  my-1 hover'>
+                    <AiFillCaretRight className='mx-1' />
+                    Details</button>
+                  <button onClick={() => { AddToCart(product) }}
+                    className='flex items-center    rounded-full text-center px-3 py-1 my-1 font-semibold'>
+                    <BsFillCartFill size={30} className='mx-1 text-yellow-400' />
+                  </button>
+                </div>
               </div>
 
             </div>

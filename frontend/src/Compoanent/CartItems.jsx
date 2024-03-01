@@ -100,7 +100,7 @@ function CardItems() {
 
           {dataIncart.map((product, i) => {
             return (
-              <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 '>
+              <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 bg-emerald-800 '>
                 <img src={product.image} alt=''
                   className='rounded-lg  w-full h-[250px]' />
                 <div className='px-1'>

@@ -4,8 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
+    color: {
+      "backNav": "#115e59",
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar'),],
 }
 

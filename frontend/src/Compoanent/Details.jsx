@@ -62,12 +62,12 @@ function Details({ product }) {
 
 
   return (
-    <div className='max-w-[1640] py-3'>
-      <div className='lg:flex   flex-row'>
-        <div className='lg:w-[500px] flex m-2  flex-col'>
+    <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  '>
+      <div className=' md:flex   bg-gray-50  p-4'>
+        <div className='lg:w-[500px] flex   flex-col'>
           <img src={imagePr} alt=''
-            className='w-full h-[350px] object-cover' />
-          <div className='flex items-center p-2'>
+            className='max-w-[350px] h-[400px] object-cover' />
+          <div className='grid grid-cols-4 gap-2 w-[350px]'>
             <img src={product.images[0]} alt=''
               onClick={() => { setImagePr(product.images[0]) }}
               className='h-[125px] w-[100px] px-1' />
@@ -83,20 +83,36 @@ function Details({ product }) {
           </div>
         </div>
 
-        <div className='w-full p-4 flex '>
-
+        <div className='w-full p-4 sm:flex'>
 
           <div className='w-[70%]'>
-            <h2 className=' text-4xl font-bold text-gray-950 pb-2 px-2 '>{product.title}</h2>
-            <h1 className=' text-3xl p-1 text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
+            <h2 className=' sm:text-2xl font-bold text-gray-950 pb-2 px-2 '>{product.title}</h2>
+            <h1 className=' sm:text-2xl p-1 text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
             <p className='text-gray-900 p-2 text-2xl tracking-wider pe-12'>
               {product.description}
             </p>
+            <div className='sm:text-xl text-gray-700 '>
+              <p className='py-2'>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro tenetur,
+                quas delectus ex quis veniam consequatur aut quasi in quo exercitationem blanditiis.
+                Modi quam neque similique ad harum tenetur illo.
+              </p>
+              <p className='py-2'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi porro tempore necessitatibus.
+                Quaerat, aut? Velit,
+                harum tempore id odit cumque dolore nisi at dignissimos tenetur quod officiis necessitatibus
+                labore sapiente!
+              </p>
+              <p className='py-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quia impedit sint debitis eos error porro eaque perspiciatis nobis iure maxime pariatur minima deleniti,
+                quos, vero blanditiis officiis delectus? Harum, doloremque!
+              </p>
+            </div>
+
           </div>
 
-          <div className=' w-[30%] flex flex-col p-2 border rounded-sm m-2 border-1 border-gray-600 '>
-
-            <h1 className=' text-2xl text-gray-700 p-1'>Quantity </h1>
+          <div className=' sm:w-[30%] flex flex-col p-2 border rounded-sm m-2 '>
+            <h1 className=' sm:text-2xl text-xl text-gray-700 p-1'>Quantity </h1>
             <input type="number"
               className="outline-none bg-gray-100 rounded text-center text-xl my-1
                     font-bold py-2 px-3" max={10} min={1}
@@ -104,7 +120,7 @@ function Details({ product }) {
               onChange={handleQuantityChange}
             />
 
-            <h1 className='py-2 text-xl my-2'>- 7697 Pieces available</h1>
+            <h1 className='py-2 sm:text-xl my-2'>- 7697 Pieces available</h1>
 
             <button onClick={() => { OnBuy(product) }}
               className='  bg-orange-500 hover:bg-orange-600 rounded-lg text-center  py-2 text-white  text-xl font-black my-1'>
@@ -112,7 +128,7 @@ function Details({ product }) {
 
             <button onClick={() => { AddToCart() }}
               className='flex items-center justify-center text-3xl p-1 my-1 border border-orange-500
-                     font-bold bg-white hover:bg-orange-100   text-orange-700 rounded-lg text-center  '>
+                     font-bold bg-white hover:text-orange-500  text-orange-700 rounded-lg text-center  '>
               <BsFillCartFill className='mx-1 ' />
               +</button>
 

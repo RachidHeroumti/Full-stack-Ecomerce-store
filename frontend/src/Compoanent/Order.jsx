@@ -72,12 +72,14 @@ function Order({ addressInfo }) {
         <h4 className=' text-gray-700'>+212 {addressInfo.mobile}</h4>
         <p className='text-gray-700'>{addressInfo.street}</p>
       </div>
+
       <div className=' bg-gray-100 m-2 p-1 rounded '>
         <h1 className='text-xl font-bold'>Payment Methods</h1>
         <h2 className='text-xl text-blue-500 cursor-pointer'
           onClick={() => { setIstopPay(true) }}
         >Select Payment Method</h2>
       </div>
+
       <div className='grid gap-5'>
 
         {dataToBay && dataToBay.map((item, i) => {
