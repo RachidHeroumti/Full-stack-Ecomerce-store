@@ -31,7 +31,7 @@ function ProductHome() {
       try {
         const res = await axios.get(getProductRoute);
         setAllProduct(res.data.products);
-        console.log(res.data.products)
+
       } catch (err) {
         console.log(err);
       }
@@ -80,7 +80,7 @@ function ProductHome() {
               <img src={product.image} alt=''
                 className='rounded-lg  w-full h-[250px] ' />
               <div className='p-3'>
-                <h2 className=' text-2xl  font-semibold h-[60px]'>{product.title}</h2>
+                <h2 className=' sm:text-2xl text-xl  font-semibold h-[60px]'>{product.title}</h2>
                 <h2 className='text-xl xl:text-2xl font-bold text-yellow-400'> {product.price}<span> $$</span></h2>
                 <p className=" text-gray-300" >Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Ut id iure blanditiis, quasi eos porro, natus ex omnis enim,
@@ -88,10 +88,13 @@ function ProductHome() {
               </div>
               <div className=' p-2 w-full '>
                 <div className=" flex justify-between text-black text-xl xl:text-2xl my-2  ">
+
                   <button onClick={() => { OnDetailes(product) }}
-                    className='flex items-center  bg-yellow-400 hover:bg-yellow-500 rounded-full text-center px-3 py-1  my-1 hover'>
+                    className='flex items-center  bg-yellow-400 hover:bg-yellow-500 rounded-full
+                      text-center px-3 py-1  my-1 hover'>
                     <AiFillCaretRight className='mx-1' />
                     Details</button>
+
                   <button onClick={() => { AddToCart(product) }}
                     className='flex items-center    rounded-full text-center px-3 py-1 my-1 font-semibold'>
                     <BsFillCartFill size={30} className='mx-1 text-yellow-400' />

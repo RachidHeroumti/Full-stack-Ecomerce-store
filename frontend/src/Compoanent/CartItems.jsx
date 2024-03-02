@@ -93,47 +93,56 @@ function CardItems() {
   }
 
   return (
-    <div className='max-w-[1640px] mx-auto p-4 mt-10'>
-      <NavBar />
-      <div className='max-w-[1640px] mx-auto flex flex-row '>
-        <div className=' grid lg:grid-cols-3 md:grid-cols-2 gap-6 w-full'>
+    <div className='max-w-[1640px] mx-auto p-4   '>
+      <div className='max-w-[1640px] mx-auto  mt-5 space-x-1'>
 
-          {dataIncart.map((product, i) => {
-            return (
-              <div key={i} className='rounded-lg shadow-lg border hover:scale-105 duration-300 bg-emerald-800 '>
-                <img src={product.image} alt=''
-                  className='rounded-lg  w-full h-[250px]' />
-                <div className='px-1'>
-                  <h2 className=' text-2xl font-light'>{product.title}</h2>
-                  <h2 className='text-xl font-bold text-orange-600'> {product.price}<span> $$</span></h2>
-                </div>
-                <div className='flex flex-row justify-between mx-5'>
-                  <button onClick={() => { onDeletFromCart(product) }}
-                    className='flex items-center rounded-full text-center px-3 py-1 text-black my-1'>
-                    <AiFillDelete size={30} className='mx-1' />
-                  </button>
+
+        {dataIncart.map((product, i) => {
+          return (
+
+            <div key={i} className=' flex my-1 bg-gray-100 p-2'>
+              <img src={product.image} alt=''
+                className='rounded-lg h-[150px] w-[100px] ' />
+              <div className=' p-2'>
+                <h2 className=' text-2xl font-bold py-1 '>{product.title}</h2>
+                <h2 className=' text-2xl font-extrabold p-1 text-orange-700'> {product.price}<span> $$</span></h2>
+
+                <div className='flex text-gray-900 p-2'>
                   <button onClick={() => { OnDetailes(product) }}
-                    className='flex items-center bg-gradient-to-tr from-gray-200 to-gray-300 rounded-full text-center px-3 py-1 text-black my-1'>
+                    className='flex items-center  bg-orange-400 sm:text-xl
+                       hover:bg-orange-500 rounded-full text-center  sm:px-3 p-1  my-1'>
                     <AiFillCaretRight size={25} className='mx-1' />
                     Details</button>
+
+                  <button onClick={() => { onDeletFromCart(product) }}
+                    className='flex items-center rounded-full text-center py-1
+                     hover:text-orange-500 px-2
+                     text-orange-600 my-1'>
+                    <AiFillDelete size={35} className='' />
+                  </button>
                 </div>
 
               </div>
-            )
-          })
-          }
 
-        </div>
-        <div className='w-1/4 p-2'>
 
-          <h1 className='text-xl font-semibold '>SubTotal <span> ({dataIncart.length} item)</span></h1>
-          <h2 className=' text-orange-600 text-xl font-bold m-1'>{total}<span>$$</span></h2>
-          <button onClick={() => { OnBuy() }}
-            className=' w-full text-center bg-yellow-500 rounded-xl  px-3 py-1 text-black hover:bg-yellow-600'>
-            Buy Now</button>
-        </div>
+            </div>
+
+          )
+        })
+        }
+
+      </div>
+
+      <div className='p-2'>
+        <h1 className='text-xl font-semibold '>SubTotal <span> ({dataIncart.length} item)</span></h1>
+        <h2 className=' text-orange-700 text-2xl font-extrabold m-1'>{total}<span> $$</span></h2>
+        <button onClick={() => { OnBuy() }}
+          className=' w-full text-2xl font-semibold text-center bg-orange-500 rounded-xl  px-3 py-1 
+             hover:bg-orange-600'>
+          Buy Now</button>
       </div>
     </div>
+
   )
 }
 

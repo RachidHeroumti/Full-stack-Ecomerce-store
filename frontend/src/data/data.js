@@ -22,7 +22,6 @@ export const products = [
 ]
 
 export const categories = {
-
 }
 export const countyCode = [
   {

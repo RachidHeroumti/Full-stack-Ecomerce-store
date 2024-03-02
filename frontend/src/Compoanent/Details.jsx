@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
 import { AddcardRoute } from '../RoutersApi/ApiRoutes'
 import { EcoState } from '../Context/EcoProvider';
+import NavBar from './NavBar';
 
 function Details({ product }) {
   const [quantity, setQuantity] = useState(1);
@@ -62,81 +63,84 @@ function Details({ product }) {
 
 
   return (
-    <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  '>
-      <div className=' md:flex   bg-gray-50  p-4'>
-        <div className='lg:w-[500px] flex   flex-col'>
-          <img src={imagePr} alt=''
-            className='max-w-[350px] h-[400px] object-cover' />
-          <div className='grid grid-cols-4 gap-2 w-[350px]'>
-            <img src={product.images[0]} alt=''
-              onClick={() => { setImagePr(product.images[0]) }}
-              className='h-[125px] w-[100px] px-1' />
-            <img src={product.images[1]} alt=''
-              onClick={() => { setImagePr(product.images[1]) }}
-              className='h-[125px] w-[100px] px-1' />
-            <img src={product.images[2]} alt=''
-              onClick={() => { setImagePr(product.images[2]) }}
-              className='h-[125px] w-[100px] px-1' />
-            <img src={product.images[3]} alt=''
-              onClick={() => { setImagePr(product.images[3]) }}
-              className='h-[125px] w-[100px] px-1' />
-          </div>
-        </div>
-
-        <div className='w-full p-4 sm:flex'>
-
-          <div className='w-[70%]'>
-            <h2 className=' sm:text-2xl font-bold text-gray-950 pb-2 px-2 '>{product.title}</h2>
-            <h1 className=' sm:text-2xl p-1 text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
-            <p className='text-gray-900 p-2 text-2xl tracking-wider pe-12'>
-              {product.description}
-            </p>
-            <div className='sm:text-xl text-gray-700 '>
-              <p className='py-2'>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro tenetur,
-                quas delectus ex quis veniam consequatur aut quasi in quo exercitationem blanditiis.
-                Modi quam neque similique ad harum tenetur illo.
-              </p>
-              <p className='py-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi porro tempore necessitatibus.
-                Quaerat, aut? Velit,
-                harum tempore id odit cumque dolore nisi at dignissimos tenetur quod officiis necessitatibus
-                labore sapiente!
-              </p>
-              <p className='py-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quia impedit sint debitis eos error porro eaque perspiciatis nobis iure maxime pariatur minima deleniti,
-                quos, vero blanditiis officiis delectus? Harum, doloremque!
-              </p>
+    <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  mt-5 '>
+      <NavBar />
+      <div className=' flex bg-gray-50  p-4'>
+        <div className='md:flex'>
+          <div className='lg:w-[500px] flex   flex-col'>
+            <img src={imagePr} alt='img'
+              className='max-w-[350px] h-[400px] object-cover' />
+            <div className='grid grid-cols-4 gap-2 w-[350px]'>
+              <img src={product.images[0]} alt=''
+                onClick={() => { setImagePr(product.images[0]) }}
+                className='h-[125px] w-[100px] px-1' />
+              <img src={product.images[1]} alt=''
+                onClick={() => { setImagePr(product.images[1]) }}
+                className='h-[125px] w-[100px] px-1' />
+              <img src={product.images[2]} alt=''
+                onClick={() => { setImagePr(product.images[2]) }}
+                className='h-[125px] w-[100px] px-1' />
+              <img src={product.images[3]} alt=''
+                onClick={() => { setImagePr(product.images[3]) }}
+                className='h-[125px] w-[100px] px-1' />
             </div>
-
           </div>
 
-          <div className=' sm:w-[30%] flex flex-col p-2 border rounded-sm m-2 '>
-            <h1 className=' sm:text-2xl text-xl text-gray-700 p-1'>Quantity </h1>
-            <input type="number"
-              className="outline-none bg-gray-100 rounded text-center text-xl my-1
-                    font-bold py-2 px-3" max={10} min={1}
-              value={quantity}
-              onChange={handleQuantityChange}
-            />
+          <div className='w-full p-4 sm:flex'>
+            <div className=''>
+              <h2 className=' sm:text-2xl font-bold text-gray-950 pb-2 px-2 '>{product.title}</h2>
+              <h1 className=' sm:text-2xl p-1 text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
+              <p className='text-gray-900 p-2 text-xl tracking-wider pe-12'>
+                {product.description}
+              </p>
+              <div className='sm:text-xl text-gray-700 '>
+                <p className='py-2'>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro tenetur,
+                  quas delectus ex quis veniam consequatur aut quasi in quo exercitationem blanditiis.
+                  Modi quam neque similique ad harum tenetur illo.
+                </p>
+                <p className='py-2'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi porro tempore necessitatibus.
+                  Quaerat, aut? Velit,
+                  harum tempore id odit cumque dolore nisi at dignissimos tenetur quod officiis necessitatibus
+                  labore sapiente!
+                </p>
+                <p className='py-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quia impedit sint debitis eos error porro eaque perspiciatis nobis iure maxime pariatur minima deleniti,
+                  quos, vero blanditiis officiis delectus? Harum, doloremque!
+                </p>
+              </div>
 
-            <h1 className='py-2 sm:text-xl my-2'>- 7697 Pieces available</h1>
+            </div>
+          </div>
+        </div>
 
-            <button onClick={() => { OnBuy(product) }}
-              className='  bg-orange-500 hover:bg-orange-600 rounded-lg text-center  py-2 text-white  text-xl font-black my-1'>
-              Buy Now</button>
+        <div className='w-[30%] flex flex-col p-2'>
+          <h1 className=' md:text-xl text-gray-700 p-1'>Quantity </h1>
+          <input type="number"
+            className="outline-none bg-gray-100 rounded text-center sm:text-xl my-1
+                    font-bold py-2 sm:px-3" max={10} min={1}
+            value={quantity}
+            onChange={handleQuantityChange}
+          />
 
-            <button onClick={() => { AddToCart() }}
-              className='flex items-center justify-center text-3xl p-1 my-1 border border-orange-500
+          <h1 className=' sm:text-xl my-2'>-49 Pieces available</h1>
+          <button onClick={() => { OnBuy(product) }}
+            className='  bg-orange-500 hover:bg-orange-600 rounded-lg 
+             text-center  py-2 text-white  sm:text-xl sm:font-semibold my-1'>
+            Buy Now</button>
+
+          <button onClick={() => { AddToCart() }}
+            className='flex items-center justify-center text-3xl my-1 border border-orange-500
                      font-bold bg-white hover:text-orange-500  text-orange-700 rounded-lg text-center  '>
-              <BsFillCartFill className='mx-1 ' />
-              +</button>
-
-          </div>
-
-
+            <BsFillCartFill className='mx-1 ' />
+            +</button>
 
         </div>
+
+
+
+
 
       </div>
 

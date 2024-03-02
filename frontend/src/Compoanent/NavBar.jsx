@@ -49,6 +49,9 @@ function NavBar() {
       )
       setNav(false);
    }
+   const onLinkTo = (id) => {
+      navigate(`/#${id}`);
+   }
 
 
 
@@ -68,22 +71,23 @@ function NavBar() {
                type='text' className='outline-none bg-transparent'
                placeholder='Search for product' />
          </div>
-         <div className='text-gray-300 flex px-2 items-center'>
-            <div className=' hidden md:flex items-center'>
-               <a href='#home' className='text-xl hover:border-b-8 mx-5 border-b-yellow-600  rounded-lg 
-               hover:text-white  text-center' >Home</a>
-               <a href='#about' className='text-xl hover:border-b-8 mx-5 border-b-yellow-600 rounded-lg 
-               hover:text-white  text-center' >About</a>
-               <a href='#shop' className='text-xl hover:border-b-8 mx-5 border-b-yellow-600 rounded-lg 
-               hover:text-white  text-center' >Shop</a>
-               <a href='#contact' className='text-xl hover:border-b-8 mx-5 border-b-yellow-600 rounded-lg 
-               hover:text-white  text-center' >Contact</a>
+         <div className='text-gray-300 flex px-5 items-center '>
+            <div className=' hidden md:flex items-center '>
+               <a href='#home' onClick={() => onLinkTo("home")}
+                  className='text-xl border-b-8 mx-5 hover:border-b-yellow-600  rounded-lg
+               border-b-emerald-800  hover:text-white  text-center' >Home</a>
+               <a href='#about' className='text-xl border-b-8 mx-5 hover:border-b-yellow-600  rounded-lg
+               border-b-emerald-800  hover:text-white  text-center' >About</a>
+               <a href='#shop' className='text-xl border-b-8 mx-5 hover:border-b-yellow-600  rounded-lg
+               border-b-emerald-800  hover:text-white  text-center' >Shop</a>
+               <a href='#contact' className='text-xl border-b-8 mx-5 hover:border-b-yellow-600  rounded-lg
+               border-b-emerald-800  hover:text-white  text-center' >Contact</a>
             </div>
 
 
             <button onClick={() => { goToCart(); }}
                className=' hover:border-b-yellow-600  rounded-lg 
-               text-xl hover:border-b-8 mx-2 border-b-yellow-600 
+               text-xl border-b-8 mx-2 border-b-emerald-800 
                hover:text-white  text-center
                 px-3 md:flex items-center'>
                <span className='md:flex hidden'>Cart</span><BsFillCartFill size={20} className='mx-2' />
@@ -112,7 +116,7 @@ function NavBar() {
             <div className='px-2 cursor-pointer '>
                <div className='space-y-2 flex flex-col'>
                   <a href='#home' className='text-xl hover:border-b-8  border-b-yellow-600  rounded-lg 
-                hover:text-gray-900 ' >Home</a>
+                hover:text-gray-900 'onClick={() => { onLinkTo("home") }} >Home</a>
                   <a href='#about' className='text-xl hover:border-b-8 border-b-yellow-600 rounded-lg 
                 hover:text-gray-900  ' >About</a>
                   <a href='#shop' className='text-xl hover:border-b-8  border-b-yellow-600 rounded-lg 
