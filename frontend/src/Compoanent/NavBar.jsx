@@ -8,6 +8,7 @@ import { BsFillSaveFill } from "react-icons/bs"
 import { FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom'
 import { EcoState } from '../Context/EcoProvider'
+import { useWindowSize } from '@react-hook/window-size';
 
 function NavBar() {
    const [isUserAdmin, setIsUserAdmin] = useState(false);
@@ -15,6 +16,8 @@ function NavBar() {
    const { setSearchData, searchdata, allProduct } = EcoState();
    const [nav, setNav] = useState(false);
    const [category, setCategory] = useState([]);
+   const [isSearch, setIsSreach] = useState(false);
+   const [screenH, screenW] = useWindowSize();
 
    const goToCart = () => {
       navigate('/cart');
@@ -28,6 +31,7 @@ function NavBar() {
          })
       )
    }
+
    useEffect(() => {
       fetch('https://fakestoreapi.com/products/categories')
          .then(res => res.json())
@@ -49,11 +53,22 @@ function NavBar() {
       )
       setNav(false);
    }
+
    const onLinkTo = (id) => {
       navigate(`/#${id}`);
    }
 
+   const onShowSearch = () => {
+      if (!isSearch) setIsSreach(true);
+      else setIsSreach(false);
+   }
 
+   useEffect(() => {
+      console.log("screen size :", screenH, screenW);
+      if (screenH >= 796 && screenW >= 940) {
+         setIsSreach(true)
+      }
+   }, []);
 
    return (
       <div className=' flex justify-between p-3  fixed start-0 top-0 end-0  z-10 
@@ -66,10 +81,14 @@ function NavBar() {
 
          </div>
          <div className=' bg-transparnt text-gray-800 flex items-center rounded-lg md:px-3 space-x-1'>
-            <AiOutlineSearch size={20} className='' />
-            <input onChange={(e) => { onSearch(e.target.value) }}
-               type='text' className='outline-none bg-transparent p-1 sm:text-xl text-gray-900'
-               placeholder='Search for product' />
+            <AiOutlineSearch size={20} className=''
+               onClick={() => onShowSearch()} />
+            {isSearch ?
+               <input onChange={(e) => { onSearch(e.target.value) }}
+                  type='text' className='outline-none bg-transparent sm:text-xl text-gray-900'
+                  placeholder="Search for product " /> : ""
+            }
+
          </div>
          <div className='text-gray-950 flex px-5 items-center '>
             <div className=' hidden md:flex items-center '>

@@ -92,9 +92,9 @@ function ProductHome() {
               <div className=' p-2 w-full h-full items-end '>
                 <div className=" flex  text-gray-900 text-xl w-full   space-x-2  bottom-0 left-0">
                   <button onClick={() => { OnDetailes(product) }}
-                    className='flex items-center  border hover:bg-red-400 hover:text-white  w-full border-gray-200 
-                    rounded
-                      text-center px-3 py-1   hover'>
+                    className='flex items-center border hover:bg-red-400 hover:text-white  w-full border-gray-200
+                     rounded
+                    text-center px-3 py-1  font-semibold  '>
                     <AiFillCaretRight className='mx-1' />
                     Details</button>
 
