@@ -65,8 +65,8 @@ function NavBar() {
 
    useEffect(() => {
       console.log("screen size :", screenH, screenW);
-      if (screenH >= 796 && screenW >= 940) {
-         setIsSreach(true)
+      if (screenH >= 815 && screenW >= 940) {
+         setIsSreach(true);
       }
    }, []);
 
