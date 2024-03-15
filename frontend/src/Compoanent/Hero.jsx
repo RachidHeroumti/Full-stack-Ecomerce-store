@@ -45,55 +45,55 @@ function Hero() {
           <div className=' bg-white rounded shadow-md flex flex-col items-center p-4 justify-center'>
             <img src='https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=300' alt='img'
               className=' w-[100px] h-[100px] rounded-full  ' />
-            <h1 className=' text-2xl text-gray-950 font-smibold p-2'>Men's </h1>
-            <p className=' text-xl text-gray-600 p-1'>+170 available</p>
+            <h1 className=' text-xl text-gray-950  p-2'>Men's </h1>
+            <p className=' sm:first-letter:text-xl text-gray-600 p-1'>+170 available</p>
 
           </div>
 
           <div className=' bg-white rounded shadow-md flex flex-col items-center p-4 justify-center'>
             <img src='https://images.pexels.com/photos/16711632/pexels-photo-16711632/free-photo-of-camera-on-black-background.jpeg?auto=compress&cs=tinysrgb&w=300' alt='img'
               className=' w-[100px] h-[100px] rounded-full  ' />
-            <h1 className=' text-2xl text-gray-950 font-smibold p-2'>Technologies</h1>
-            <p className=' text-xl text-gray-600 p-1'>+100 available</p>
+            <h1 className=' text-xl sm:text-2xl text-gray-950  p-2'>Technologies</h1>
+            <p className=' sm:text-xl text-gray-600 p-1'>+100 available</p>
 
           </div>
 
           <div className=' bg-white rounded shadow-md flex flex-col items-center p-4 justify-center'>
             <img src='https://media.istockphoto.com/id/171224469/photo/canvas-shoes.jpg?b=1&s=612x612&w=0&k=20&c=U9NLTutbuQ_L3HABoaa9Bsb_U3iJYw1QmKCBe0H3KWM=' alt='img'
               className=' w-[100px] h-[100px] rounded-full  ' />
-            <h1 className=' text-2xl text-gray-950 font-smibold p-2'>Shoes</h1>
-            <p className=' text-xl text-gray-600 p-1'>+170 available</p>
+            <h1 className=' text-xl sm:text-2xl text-gray-950  p-2'>Shoes</h1>
+            <p className=' sm:text-xl text-gray-600 p-1'>+170 available</p>
 
           </div>
 
           <div className=' bg-white rounded shadow-md flex flex-col items-center p-4 justify-center'>
             <img src='https://images.pexels.com/photos/2105493/pexels-photo-2105493.jpeg?auto=compress&cs=tinysrgb&w=300' alt='img'
               className=' w-[100px] h-[100px] rounded-full  ' />
-            <h1 className=' text-2xl text-gray-950 font-smibold p-2'>Sports</h1>
-            <p className=' text-xl text-gray-600 p-1'>+300 available</p>
+            <h1 className=' text-xl sm:text-2xl text-gray-950  p-2'>Sports</h1>
+            <p className=' sm:text-xl text-gray-600 p-1'>+300 available</p>
 
           </div>
 
           <div className=' bg-white rounded shadow-md flex flex-col items-center p-4 justify-center'>
             <img src='https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=300' alt='img'
               className=' w-[100px] h-[100px] rounded-full  ' />
-            <h1 className=' text-2xl text-gray-950 font-smibold p-2'>women's </h1>
-            <p className=' text-xl text-gray-600 p-1'>+170 available</p>
+            <h1 className=' text-xl sm:text-2xl text-gray-950  p-2'>women's </h1>
+            <p className=' sm:text-xl text-gray-600 p-1'>+170 available</p>
 
           </div>
 
           <div className=' bg-white rounded shadow-md flex flex-col items-center p-4 justify-center'>
             <img src='https://images.pexels.com/photos/1599791/pexels-photo-1599791.jpeg?auto=compress&cs=tinysrgb&w=300' alt='img'
               className=' w-[100px] h-[100px] rounded-full  ' />
-            <h1 className=' text-2xl text-gray-950 font-smibold p-2'>Cuisine</h1>
-            <p className=' text-xl text-gray-600 p-1'>+170 available</p>
+            <h1 className=' text-xl sm:text-2xl text-gray-950  p-2'>Cuisine</h1>
+            <p className=' sm:text-xl text-gray-600 p-1'>+170 available</p>
 
           </div>
 
         </div>
 
         <div className=' flex text-white justify-center items-center'>
-          <button className='text-center bg-gray-900 p-2 rounded-md text-xl'>See More {"->"}</button>
+          <button className='text-center bg-gray-900 p-2 rounded-md sm:text-xl'>See More {"->"}</button>
         </div>
 
       </div>

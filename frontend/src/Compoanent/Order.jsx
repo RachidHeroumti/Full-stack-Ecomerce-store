@@ -51,16 +51,16 @@ function Order({ addressInfo }) {
     addToTotal();
   }, []);
 
-  const onDeletFromOrder = (i) => {
-    console.log(i);
-    const productsCopy = dataToBay;
-    const deletedItem = productsCopy.splice(i + 1, 0);
-    setDataToBay(
-      productsCopy.filter((item) => {
-        return item.title != i.title;
-      })
-    );
-  }
+  // const onDeletFromOrder = (i) => {
+  //   console.log(i);
+  //   const productsCopy = dataToBay;
+  //   const deletedItem = productsCopy.splice(i + 1, 0);
+  //   setDataToBay(
+  //     productsCopy.filter((item) => {
+  //       return item.title != i.title;
+  //     })
+  //   );
+  // }
 
 
   return (
