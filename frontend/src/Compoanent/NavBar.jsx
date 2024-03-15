@@ -15,7 +15,7 @@ function NavBar() {
    const navigate = useNavigate();
    const { setSearchData, searchdata, allProduct } = EcoState();
    const [nav, setNav] = useState(false);
-   const [category, setCategory] = useState([]);
+
    const [isSearch, setIsSreach] = useState(false);
    const [screenH, screenW] = useWindowSize();
 
@@ -32,27 +32,10 @@ function NavBar() {
       )
    }
 
-   useEffect(() => {
-      fetch('https://fakestoreapi.com/products/categories')
-         .then(res => res.json())
-         .then(cats => {
-
-            setCategory(cats)
-         })
-
-   }, [])
 
 
-   const onSetCategory = (ctgName) => {
 
-      setSearchData(
-         allProduct.filter((item) => {
-            return item.category == ctgName;
-         })
 
-      )
-      setNav(false);
-   }
 
    const onLinkTo = (id) => {
       navigate(`/#${id}`);
@@ -64,7 +47,6 @@ function NavBar() {
    }
 
    useEffect(() => {
-      console.log("screen size :", screenH, screenW);
       if (screenH >= 815 && screenW >= 940) {
          setIsSreach(true);
       }
@@ -72,7 +54,7 @@ function NavBar() {
 
    return (
       <div className=' flex justify-between p-3  fixed start-0 top-0 end-0  z-10 
-        bg-red-200 w-full'>
+        bg-red-100 w-full'>
          <div className=' flex items-center py-2'>
             <div className=' flex md:hidden' >
                {<AiOutlineMenu size={20} className=' text-gray-800 mx-2' onClick={() => { setNav(true) }} />}
@@ -91,7 +73,7 @@ function NavBar() {
 
          </div>
          <div className='text-gray-950 flex px-5 items-center '>
-            <div className=' hidden md:flex items-center '>
+            <div className=' hidden md:flex items-center  font-bold'>
                <a href='#home' onClick={() => onLinkTo("home")}
                   className='text-xl  mx-5   rounded-lg
                 hover:text-gray-50 hover:bg-red-500   p-1  text-center' >Home</a>

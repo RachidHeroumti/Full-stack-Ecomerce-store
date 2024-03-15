@@ -14,8 +14,8 @@ export const UpdatePrRoute = `${host}/product`;//
 
 
 //Category
-export const getCategory = `${host}/category/`;//GET
-export const CreateCategoryRoute = `${host}/categories/`;
+export const CreateCategoryRoute = `${host}/category/`;//POST
+export const getCategories = `${host}/categories/`;//GET
 export const getOneCategory = `${host}/category/`; //with : id
 //cart
 export const AddcardRoute = `${host}/cart/add-create`;

@@ -12,7 +12,7 @@ function ProductHome() {
   const { searchdata, setProductDetails, setAllProduct, userToken } = EcoState()
   const navigate = useNavigate();
 
-  let ls;
+
   const toastOptions = {
     position: "bottom-right",
     autoClose: 500,

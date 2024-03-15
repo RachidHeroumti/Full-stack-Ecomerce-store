@@ -7,7 +7,7 @@ import Footer from '../Compoanent/Footer'
 import BFooter from "../Compoanent/bFooter"
 function Home() {
   return (
-    <div className='max-w-[1640] scrollbar-thumb-red-50 scrollbar-thin bg-red-50
+    <div className='max-w-[1640] scrollbar-thumb-red-200 scrollbar-thin bg-red-50
           scrollbar-track-slate-50 h-screen overflow-y-scroll'>
       <NavBar />
       <Hero />
