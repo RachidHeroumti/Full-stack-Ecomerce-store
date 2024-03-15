@@ -63,17 +63,17 @@ function Details({ product }) {
 
 
   return (
-    <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  mt-5 '>
+    <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  mt-10 '>
       <NavBar />
       <div className=' flex bg-gray-50  p-4'>
         <div className='md:flex'>
-          <div className='lg:w-[500px] flex   flex-col'>
+          <div className='lg:w-[500px] flex   flex-col w-full items-center sm:items-start'>
             <img src={imagePr} alt='img'
-              className='max-w-[350px] h-[400px] object-cover' />
-            <div className='grid grid-cols-4 gap-2 w-[350px]'>
+              className='max-w-[350px] sm:h-[200px]  md:h-[400px] h-[150px] object-cover' />
+            <div className='grid grid-cols-4 gap-2 max-w-[350px]'>
               <img src={product.images[0]} alt=''
                 onClick={() => { setImagePr(product.images[0]) }}
-                className='h-[125px] w-[100px] px-1' />
+                className=' h-[80px] w-[60px]  sm:h-[125px] sm:w-[100px] px-1' />
               <img src={product.images[1]} alt=''
                 onClick={() => { setImagePr(product.images[1]) }}
                 className='h-[125px] w-[100px] px-1' />
@@ -89,7 +89,7 @@ function Details({ product }) {
           <div className='w-full p-4 sm:flex'>
             <div className=''>
               <h2 className=' sm:text-2xl font-bold text-gray-950 pb-2 px-2 '>{product.title}</h2>
-              <h1 className=' sm:text-2xl p-1 text-orange-600 font-bold px-5'>{product.price} <span>$$</span></h1>
+              <h1 className=' sm:text-2xl p-1 text-orange-800 font-bold px-5'>{product.price} <span>$$</span></h1>
               <p className='text-gray-900 p-2 text-xl tracking-wider pe-12'>
                 {product.description}
               </p>
@@ -126,13 +126,13 @@ function Details({ product }) {
 
           <h1 className=' sm:text-xl my-2'>-49 Pieces available</h1>
           <button onClick={() => { OnBuy(product) }}
-            className='  bg-orange-500 hover:bg-orange-600 rounded-lg 
+            className='  bg-red-500 hover:bg-red-600 rounded-lg 
              text-center  py-2 text-white  sm:text-xl sm:font-semibold my-1'>
             Buy Now</button>
 
           <button onClick={() => { AddToCart() }}
-            className='flex items-center justify-center text-3xl my-1 border border-orange-500
-                     font-bold bg-white hover:text-orange-500  text-orange-700 rounded-lg text-center  '>
+            className='flex items-center justify-center text-3xl my-1 border border-red-500
+                     font-bold bg-white hover:text-red-500  text-red-700 rounded-lg text-center  '>
             <BsFillCartFill className='mx-1 ' />
             +</button>
 

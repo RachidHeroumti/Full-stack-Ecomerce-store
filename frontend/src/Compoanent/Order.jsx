@@ -64,8 +64,8 @@ function Order({ addressInfo }) {
 
 
   return (
-    <div className='max-h-[1640] p-4 mb-12'>
-      <h1 className='text-3xl font-bold p-5 flex justify-center'>Order Confirmation</h1>
+    <div className='max-w-[1640px] p-4 mb-12'>
+      <h1 className='text-3xl font-bold p-5  text-center'>Order Confirmation</h1>
       <div className='px-3 shadow-md py-2 my-5 bg-gray-100 rounderd-lg'>
         <h2 className='text-2xl'>Shopping Address</h2>
         <h3 className='text-xl text-gray-900'>{addressInfo.contactName}</h3>
@@ -80,21 +80,16 @@ function Order({ addressInfo }) {
         >Select Payment Method</h2>
       </div>
 
-      <div className='grid gap-5'>
+      <div className='grid gap-5 grid-cols-2 sm:grid-cols-4 xl:grid-cols-5'>
 
         {dataToBay && dataToBay.map((item, i) => {
-          return (<div className='rounded bg-gray-100' key={i}>
-            <div className='flex flex-row p-4'>
-              <img className='rounded-lg h-[150px] w-[100px] '
+          return (<div className='rounded bg-gray-100 flex ' key={i}>
+            <div className='sm:flex  p-4 items-center'>
+              <img className='rounded-lg sm:h-[150px] sm:w-[100px] h-[80px] w-full '
                 src={item.image} alt='' />
               <div className='px-3'>
                 <h1 className='text-xl font-semibold py-1'>{item.title} </h1>
-                <h1 className='text-2xl font-bold text-orange-600 py-1'>{item.price} <span>$</span></h1>
-                <div className='flex flex-row'>
-                  <AiFillDelete size={25} className='mx-1' onClick={() => { onDeletFromOrder(item) }} />
-                  <input type='number' defaultValue={1}
-                    className=' outline-none bg-gray-200 mx-2 px-2 rounded-xl text-center' min={1} max={10} />
-                </div>
+                <h1 className='text-xl  font-bold text-red-600 py-1'>{item.price} <span>$$</span></h1>
               </div>
             </div>
 
@@ -104,9 +99,9 @@ function Order({ addressInfo }) {
 
 
       </div>
-      <div className=' fixed bottom-0 left-0 bg-white w-full flex  p-5 justify-between flex-col md:flex-row'>
-        <h1 className='text-2xl font-bold px-10 w-full'>Total  :  <span className=' text-orange-600'>{tolat} $</span></h1>
-        <button className=' w-full text-center py-1 rounded-full bg-orange-500 text-white text-xl font-bold'
+      <div className=' space-x-2 space-y-2 bg-gray-50 w-full flex  p-5 justify-between flex-col  m-5 sm:flex-row'>
+        <h1 className=' text-xl sm:text-2xl font-bold sm:px-10 w-full'>Total  :  <span className=' text-red-600'>{tolat} $$</span></h1>
+        <button className=' w-full text-center py-1 rounded-full bg-red-500 text-white text-xl font-bold'
           onClick={() => { OrderNow() }}
         >Order Now</button>
       </div>
@@ -140,7 +135,7 @@ function Order({ addressInfo }) {
               className='w-6 h-6 rounded-lg outline-none' />
           </div>
           <button onClick={() => { setIstopPay(false) }}
-            className="text-xl bg-orange-500 font-bold text-center py-1 rounded-full w-full text-white">
+            className="text-xl bg-red-500 font-bold text-center py-1 rounded-full w-full text-white">
             save $ confirm
           </button>
         </div>

@@ -99,24 +99,24 @@ function CardItems() {
         {dataIncart.map((product, i) => {
           return (
 
-            <div key={i} className=' flex my-1 bg-emerald-700 p-2  rounded-sm '>
+            <div key={i} className=' flex my-1 bg-gray-100 p-2  rounded-sm '>
               <img src={product.image} alt=''
                 className='rounded-lg h-[150px] w-[100px] ' />
               <div className=' p-2'>
-                <h2 className=' text-2xl font-bold py-1 text-yellow-50 '>{product.title}</h2>
-                <h2 className=' text-2xl font-extrabold p-1 text-yellow-300'> {product.price}<span> $$</span></h2>
+                <h2 className=' text-2xl font-bold py-1 text-gry-950 '>{product.title}</h2>
+                <h2 className=' text-2xl font-extrabold p-1 text-orange-700'> {product.price}<span> $$</span></h2>
 
-                <div className='flex text-gray-900 p-2'>
+                <div className='flex text-white p-2'>
                   <button onClick={() => { OnDetailes(product) }}
-                    className='flex items-center  bg-yellow-400 sm:text-xl
-                       hover:bg-yellow-500 rounded-full text-center  sm:px-3 p-1  my-1'>
+                    className='flex items-center  bg-red-500 sm:text-xl
+                       hover:bg-red-600 rounded-xl text-center  sm:px-3 p-1  my-1'>
                     <AiFillCaretRight size={25} className='mx-1' />
                     Details</button>
 
                   <button onClick={() => { onDeletFromCart(product) }}
                     className='flex items-center rounded-full text-center py-1
-                     hover:text-yellow-500 px-2 
-                     text-yellow-600 my-1'>
+                     hover:text-red-500 px-2 
+                     text-red-600 my-1'>
                     <AiFillDelete size={35} className='' />
                   </button>
                 </div>
@@ -132,15 +132,15 @@ function CardItems() {
 
       </div>
 
-      <div className='p-2 text-white'>
-        <div className=' flex space-x-3 text-xl p-3'>
+      <div className='p-2 text-white sm:flex'>
+        <div className=' flex space-x-3 text-xl p-3 w-full'>
           <h1 className='text-xl font-semibold text-gray-900 '>SubTotal <span> ({dataIncart.length} item)</span></h1>
           <h2 className=' text-orange-700 text-2xl font-extrabold '>{total}<span> $$</span></h2>
         </div>
 
         <button onClick={() => { OnBuy() }}
-          className=' w-full text-2xl font-semibold text-center bg-emerald-800 rounded-xl  px-3 py-1 
-             hover:bg-emerald-700 '>
+          className=' w-full text-2xl font-semibold text-center bg-red-700 rounded-xl  px-3 py-1 
+             hover:bg-red-600 '>
           Buy Now</button>
       </div>
     </div>
