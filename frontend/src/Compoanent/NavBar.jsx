@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose, AiFillTag, AiFillCaretRight } from "react-icons/ai"
 import { BsFillCartFill } from "react-icons/bs"
-import { TbTruckDelivery } from "react-icons/tb"
-import { MdFavorite, MdHelp } from "react-icons/md"
-import { FaWallet, FaUserFriends } from "react-icons/fa"
-import { BsFillSaveFill } from "react-icons/bs"
 import { FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom'
 import { EcoState } from '../Context/EcoProvider'
@@ -31,8 +27,6 @@ function NavBar() {
          })
       )
    }
-
-
 
 
 
@@ -87,7 +81,7 @@ function NavBar() {
 
 
             <button onClick={() => { goToCart(); }}
-               className='   rounded-lg flex 
+               className='   rounded-lg flex font-bold
                text-xl  mx-2 hover:text-gray-50 hover:bg-red-500  p-1
                  text-center
                 px-3 md:flex items-center'>

@@ -52,7 +52,7 @@ function Hero() {
 
   return (
 
-    <div className='max-w-[1640px] mx-auto p-3 ' id='home'>
+    <div className='max-w-[1640px] mx-auto  ' id='home'>
 
       <div className='flex items-center bg-red-100 '>
 
@@ -66,15 +66,17 @@ function Hero() {
             pariatur dolorum ullam minus ad fugiat delectus doloremque quo magnam at,
             possimus rem adipisci perspiciatis debitis magni excepturi? Nam, magni ex.</p>
 
-          <div className=' space-x-4 my-5 space-y-1'>
-            <a href='#shop' className='text-2xl p-2 px-3 text-white rounded-full bg-red-500 hover:bg-red-600'>Shop Now</a>
+          <div className='flex flex-col sm:flex-row  sm:space-x-4 my-5 space-y-1 space-x-1'>
+            <a href='#shop' className='text-2xl p-2 px-3 text-white 
+            rounded-full bg-red-500 hover:bg-red-600'>Shop Now</a>
+
             <a href='#explore' className='text-2xl font-medium p-2 px-3 text-gray-800 hover:border-gray-800 
               rounded-full border border-gray-300'>Explore</a>
           </div>
         </div>
 
         <img src={PIC3} alt=''
-          className='w-full h-[600px] p-12 rounded hidden md:flex' />
+          className='md:w-2/3 xl:w-full w-full h-[600px] sm:p-12 p-3 rounded hidden md:flex' />
 
       </div>
 
