@@ -10,6 +10,7 @@ import axios from 'axios'
 function Hero() {
   const { searchdata, setProductDetails, setAllProduct, allProduct } = EcoState()
   const [category, setCategory] = useState([]);
+  const[ListCategories,setListCategory]=useState([]);
   const [showallcategories, setShowAllCategories] = useState(false);
 
   const onSetCategory = (ctgName) => {
@@ -21,34 +22,46 @@ function Hero() {
     )
     setNav(false);
   }
-  const getProducts = (item) => {
-    console.log(item);
-  }
+
+
+
 
   useEffect(() => {
 
     const getCatgs = async () => {
       const res = await axios.get(getCategories);
+      console.log("Categories : ",res);
       if (res.data.categories) {
-        //setCategory(res.categories);
+        setCategory(res.data.categories);
       }
     }
 
+    getCatgs();
 
   }, [])
 
   useEffect(() => {
-    if (!showallcategories) {
-      const ctgs = categories;
-      setCategory(ctgs.slice(4));
+    if(category){
+      const ctgs = category;
+      if (!showallcategories) {
+        setListCategory(ctgs.slice(4));
+      }
+      else {
+        setListCategory(ctgs);
+      }
     }
-    else {
-      setCategory(categories);
-    }
 
-  }, [showallcategories]);
+  }, [showallcategories,category]);
+
+const onGetProductByCategory=(categoryId)=>{
 
 
+  console.log(categoryId);
+  try{
+    //const res= axios.get()
+
+  }catch(err){console.log(err)}
+}
 
   return (
 
@@ -89,12 +102,12 @@ function Hero() {
           commodi dolorem magni. </p>
         <div className=' grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2  p-1 sm:p-4'>
 
-          {category.map((item, i) => {
+          {category&&ListCategories.map((item, i) => {
 
             return (
-              <div key={i}
+              <div key={item._id}
                 className=' bg-white hover:bg-red-100  rounded shadow-md flex flex-col items-center p-1 sm:p-4 justify-center'
-                onClick={() => { getProducts(item) }}
+                onClick={() => { onGetProductByCategory(item._id) }}
               >
                 <img src={item.image} alt='img'
                   className=' w-[100px] h-[100px] rounded-full  ' />

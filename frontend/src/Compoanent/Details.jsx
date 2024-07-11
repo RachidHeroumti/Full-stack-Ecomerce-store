@@ -25,9 +25,8 @@ function Details({ product }) {
   };
 
   const AddToCart = async () => {
-    const token = localStorage.getItem('token');
-
-    if (token) {
+  
+    if (userToken) {
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -42,6 +41,8 @@ function Details({ product }) {
       } catch (err) {
         console.log(err);
       }
+    }else{
+      navigate("/login");
     }
 
   }
@@ -57,6 +58,7 @@ function Details({ product }) {
       setIsFixed(true);
     }
   }, []);
+
 
 
 

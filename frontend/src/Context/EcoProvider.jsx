@@ -15,7 +15,7 @@ function EcoProvider({ children }) {
 
   useEffect(() => {
 
-    setSearchData(products);
+    //setSearchData(products);
 
     if (allProduct.length > 1) {
       setSearchData(allProduct);

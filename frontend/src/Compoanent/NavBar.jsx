@@ -59,11 +59,11 @@ function NavBar() {
          <div className=' bg-transparnt text-gray-800 flex items-center rounded-lg md:px-3 space-x-1'>
             <AiOutlineSearch size={20} className=''
                onClick={() => onShowSearch()} />
-            {isSearch ?
+          
                <input onChange={(e) => { onSearch(e.target.value) }}
                   type='text' className='outline-none bg-transparent sm:text-xl text-gray-900'
-                  placeholder="Search for product " /> : ""
-            }
+                  placeholder="Search for product " /> 
+            
 
          </div>
          <div className='text-gray-950 flex px-5 items-center '>
