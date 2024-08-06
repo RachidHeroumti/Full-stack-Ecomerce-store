@@ -5,14 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
 import { AddcardRoute } from '../RoutersApi/ApiRoutes'
 import { EcoState } from '../Context/EcoProvider';
-
+import ProductHome from './ProductHome'
 import { useWindowSize } from '@react-hook/window-size';
+import CardItem from './CardItem';
+import { IoMdPerson } from "react-icons/io";
+import { CiStar } from "react-icons/ci";
+
+
 
 function Details({ product }) {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const [imagePr, setImagePr] = useState(product.image)
-  const { setDataToBay, dataToBay } = EcoState()
+  const { searchdata, setAllProduct,dataToBay } = EcoState()
   const { userToken } = EcoState();
   const [screenH, screenW] = useWindowSize();
   const [isfixed, setIsFixed] = useState(false);
@@ -47,7 +52,6 @@ function Details({ product }) {
 
   }
 
-  //Event handler to update the quantity when the input changes
   const handleQuantityChange = (e) => {
     const newValue = parseInt(e.target.value, 10);
     setQuantity(newValue);
@@ -59,11 +63,25 @@ function Details({ product }) {
     }
   }, []);
 
+  useEffect(() => {
 
+    const getPrs = async () => {
+      try {
+        const res = await axios.get(getProductRoute);
+        if(res.data.products){
+          setAllProduct(res.data.products);
+        }
+      
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getPrs();
+  }, []);
 
 
   return (
-    <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  mt-10 '>
+    <div className=' max-w-[1640] md:p-12 p-2  mt-10  '>
  
       <div className=' flex bg-gray-50  p-4'>
         <div className='md:flex'>
@@ -141,12 +159,35 @@ function Details({ product }) {
 
         </div>
 
-
-
+      </div>
+      <div className='  p-5'>
+        <h1 className=' text-2xl font-semibold text-yellow-700 p-5'>Reviwes </h1>
+         <div className=' text-xl font-normal text-black'>
+          <div className=' flex items-center'>
+          <IoMdPerson size={25} className='' />
+          <span className=' px-3'>@username</span>
+           <div className=' flex items-center space-x-1'>
+           <CiStar size={25} className=' text-yellow-500' />
+           <CiStar size={25} className=' text-yellow-500' />
+           <CiStar size={25} className=' text-yellow-500' />
+           <CiStar size={25} className=' text-yellow-500' />
+           <CiStar size={25} className=' text-yellow-500' />
+           </div>
+          </div>
+ 
+           <p className='p-5  text-gray-800 '>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            quas incidunt delectus .
+            </p>
+         </div>
 
 
       </div>
-
+      <div className='p-5'>
+      <h1 className=' text-3xl font-semibold text-center m-5  text-red-950'>See More Product From same category  </h1>
+      </div>
+    
+      <CardItem products={searchdata}/>
       <ToastContainer />
     </div>
   )

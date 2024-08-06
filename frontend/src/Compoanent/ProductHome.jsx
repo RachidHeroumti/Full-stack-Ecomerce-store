@@ -7,10 +7,8 @@ import { getProductRoute, AddcardRoute } from '../RoutersApi/ApiRoutes'
 import CardItem from './CardItem'
 
 function ProductHome() {
+  
   const { searchdata, setAllProduct, userToken } = EcoState()
-  const[isLoading,setIsLoading]=useState("Loading ...")
-
-
   useEffect(() => {
 
     const getPrs = async () => {
