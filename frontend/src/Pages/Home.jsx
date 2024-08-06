@@ -1,9 +1,9 @@
 import React from 'react'
-import NavBar from "../Compoanent/NavBar"
+import NavBar from "../Compoanent/common/NavBar"
 import Hero from '../Compoanent/Hero'
 import ProductHome from '../Compoanent/ProductHome'
 import { ToastContainer } from 'react-toastify'
-import Footer from '../Compoanent/Footer'
+import Footer from '../Compoanent/common/Footer'
 import BFooter from "../Compoanent/bFooter"
 function Home() {
   return (

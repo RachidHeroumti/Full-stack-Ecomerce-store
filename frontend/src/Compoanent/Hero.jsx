@@ -63,7 +63,7 @@ const onGetProductByCategory=(categoryId)=>{
 
   return (
 
-    <div className='max-w-[1640px] mx-auto  ' id='home'>
+    <div className='w-full mx-auto  ' id='home'>
 
       <div className='flex items-center bg-red-100 '>
 

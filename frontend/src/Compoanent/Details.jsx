@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
 import { AddcardRoute } from '../RoutersApi/ApiRoutes'
 import { EcoState } from '../Context/EcoProvider';
-import NavBar from './NavBar';
+
 import { useWindowSize } from '@react-hook/window-size';
 
 function Details({ product }) {
@@ -64,7 +64,7 @@ function Details({ product }) {
 
   return (
     <div className=' max-w-[1640] md:p-12 p-2 flex justify-center  mt-10 '>
-      <NavBar />
+ 
       <div className=' flex bg-gray-50  p-4'>
         <div className='md:flex'>
           <div className='lg:w-[500px] flex   flex-col w-full sm:w-full items-center sm:items-start'>

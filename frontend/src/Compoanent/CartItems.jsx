@@ -3,7 +3,7 @@ import { EcoState } from '../Context/EcoProvider';
 import { useNavigate } from 'react-router-dom';
 import { BsFillCartFill } from "react-icons/bs"
 import { AiFillCaretRight, AiFillDelete } from "react-icons/ai"
-import NavBar from './NavBar';
+
 import axios from 'axios'
 import { deletFromCardRoute, getcardRoute } from '../RoutersApi/ApiRoutes'
 import cookies from 'js-cookie'
@@ -15,12 +15,9 @@ function CardItems() {
   const navigate = useNavigate();
 
 
-  useEffect(() => {
-    const token = cookies.get('token');
-    if (!userToken && !token) {
-      navigate('/login');
-    }
-  }, [])
+
+
+
   //get products 
   useEffect(() => {
     const getDataCard = async () => {
@@ -41,6 +38,18 @@ function CardItems() {
         } catch (err) {
           console.log(err);
         }
+      }else{
+        var archive = [],
+    keys = Object.keys(localStorage),
+    i = 0, key;
+
+for (; key = keys[i]; i++) {
+    const item = localStorage.getItem(key);
+    if (item) {
+        archive.push(JSON.parse(item));
+    }
+   }
+   setDataIncart(archive);
       }
     }
     getDataCard();
@@ -60,9 +69,11 @@ function CardItems() {
     })
     setTotal(t.toFixed(2));
   }
+
+
   useEffect(() => {
     if (dataIncart)
-      addToTotal();
+       addToTotal(); 
   }, [dataIncart]);
 
 
@@ -94,12 +105,11 @@ function CardItems() {
 
   return (
     <div className='max-w-[1640px] mx-auto p-1 '>
-      <NavBar />
       <div className='max-w-[1640px] mx-auto pt-10  mt-12 space-y-2'>
         {dataIncart.map((product, i) => {
           return (
 
-            <div key={i} className=' flex my-1 bg-gray-100 p-2  rounded-sm '>
+            <div key={product._id} className=' flex my-1 bg-gray-100 p-2  rounded-sm '>
               <img src={product.image} alt=''
                 className='rounded-lg h-[150px] w-[100px] ' />
               <div className=' p-2'>

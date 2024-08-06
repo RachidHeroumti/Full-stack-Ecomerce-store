@@ -6,13 +6,16 @@ import axios from 'axios'
 import cookies from 'js-cookie'
 import { EcoState } from '../Context/EcoProvider'
 
+import { IoArrowBackCircle } from "react-icons/io5";
+
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@gmail.com");
+  const [password, setPassword] = useState("test123");
   const navigate = useNavigate();
   const { setUserToken } = EcoState()
 
+  const[loginState,setLoginState]=useState("Log in");
   const toastOption = {
     position: "bottom-right",
     autoClose: 3000,
@@ -35,12 +38,13 @@ function Login() {
       return;
     }
     try {
+      setLoginState("Wait ...")
       const res = await axios.post(loginRoute, { email, password });
       if (res.data.id) {
         const token = res.data.token;
         cookies.set('token', token, { expires: 30 });
         setUserToken(token);
-        navigate('/cart');
+        navigate('/');
       }
 
     } catch (err) {
@@ -51,7 +55,8 @@ function Login() {
   return (
     <div className='max-w-[1640] p-4 flex justify-center py-12'>
       <div className='w-[400px] p-5 bg-gray-50 shadow-lg rounded-md '>
-        <h1 className=' text-2xl font-bold text-red-600 p-2'> Log in</h1>
+        <a href='/' className=' p-1'><IoArrowBackCircle size={25} className=' text-red-500'/></a>
+        <h1 className=' text-2xl font-bold text-red-600 '> Log in</h1>
         <div>
           <input onChange={(e) => { setEmail(e.target.value) }}
             value={email}
@@ -65,7 +70,7 @@ function Login() {
 
           <button onClick={() => { OnLogin() }}
             className='rounded-full w-full text-center font-bold mt-2 bg-red-500 hover:bg-red-600 text-white  p-1'>
-            Log in
+            {loginState}
           </button>
           <div className='flex items-center justify-end py-2'>
             <span>
