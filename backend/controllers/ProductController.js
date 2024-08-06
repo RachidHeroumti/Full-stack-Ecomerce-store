@@ -1,60 +1,54 @@
-import Product from '../model/Product.js'
+import productService from '../Services/ProductService.js';
 
-//
-export const CreateProduct =async(req,res)=>{
-  const{title,description,price,image,category,images}=req.body ;
-
-  if(!title||!description||!price||!image||!category||!images){
-   return res.json({message : "Please Enter all informations !"})
- 
-  }else{ 
-    let pr;
-       try{
-         pr=await Product.find({description});
-        //  if(pr){
-        //   return res.status(401).json({message :"there is already an product with same description !"})
-        //  }
-
-       pr=new Product({title,description,price,image,category,images,seller:req.user._id});
-        await pr.save();
-         res.status(200).json({pr}) ;
-    }catch(err){
-      console.log(err) ;
-    }
+export const createProduct = async (req, res) => {
+  try {
+    const product = await productService.createProduct({
+      ...req.body,
+      seller: req.user._id,
+    });
+    res.status(200).json({ product });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: err.message });
   }
-}
+};
 
-//
-export const getProduct =async(req,res)=>{
-  const id=req.params.id;
-   
-  try{
-    const product=await Product.findOne({_id:id}) ;
-     if(!product) return res.json({message :"Product not existe !"});
+export const getProduct = async (req, res) => {
+  try {
+    const product = await productService.getProduct(req.params.id);
+    res.status(200).json({ product });
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+};
 
-     res.status(200).json({product});
+export const getProducts = async (req, res) => {
+  try {
+    const products = await productService.getProducts();
+    res.status(200).json({ products });
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+};
 
-  }catch(err){
-      console.log(err) ;
-    }
-}
+export const getProductByCategory = async (req, res) => {
+  try {
+    const products = await productService.getProductByCategory(req.params.category);
+    res.status(200).json({ products });
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+};
 
-//
-export const getProducts =async(req,res)=>{
-   try{
-    const products=await Product.find() ;
-     if(!products) return res.json({message :"no product yet!"});
-     res.status(200).json({products});
-
-  }catch(err){
-      console.log(err) ;
-    }
-}
-//
-export const getProductWhere =async(req,res)=>{
-
-}
-//
-export const updateProduct =async(req,res)=>{
-
-}
+export const updateProduct = async (req, res) => {
+  try {
+    const product = await productService.updateProduct(req.params.id, req.body);
+    res.status(200).json({ product });
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+};
