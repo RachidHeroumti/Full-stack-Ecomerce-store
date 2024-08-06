@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import PIC1 from "../assets/pic1.png"
-import PIC2 from "../assets/pic2.png"
+
 import PIC3 from "../assets/pic3.png"
 import { EcoState } from '../Context/EcoProvider'
 import { getCategories } from "../RoutersApi/ApiRoutes"
-import { categories } from '../data/data'
 import axios from 'axios'
 
 function Hero() {
@@ -30,7 +28,7 @@ function Hero() {
 
     const getCatgs = async () => {
       const res = await axios.get(getCategories);
-      console.log("Categories : ",res);
+  
       if (res.data.categories) {
         setCategory(res.data.categories);
       }

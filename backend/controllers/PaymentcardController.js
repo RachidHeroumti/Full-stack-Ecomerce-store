@@ -1,4 +1,5 @@
 import PaymentCard from "../model/PaymentCard.js";
+import Stripe from "stripe"
 
 export const AddPaymentCardInfo  = async(req,res)=>{
     const{cardNumber,DtCard,cvv}=req.body ;
@@ -30,4 +31,20 @@ export const getPaymentCardInfo = async (req,res)=>{
       console.log(err);
     }
       
+}
+
+ export const PayInstripe=async(req,res)=>{
+  const stripe =new Stripe("") ;
+  const {amount} =req.body;
+
+  try{
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: 'usd',
+    });
+    return send
+
+  }catch(err){
+    console.log(err);
+  }
 }
