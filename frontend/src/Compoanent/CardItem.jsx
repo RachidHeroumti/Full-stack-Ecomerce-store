@@ -58,7 +58,7 @@ function CardItem({products,isLoading}) {
     }
   }
   if(products.length===0){
-    return <h1 className=' text-2xl text-black text-center font-bold'>{isLoading}</h1>
+    return <h1 className=' text-4xl text-black text-center font-semibold'>{isLoading}</h1>
   }
   return (
     <div className=' grid lg:grid-cols-4 md:grid-cols-2 gap-6' id='shop'>

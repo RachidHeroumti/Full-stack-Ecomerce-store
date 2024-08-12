@@ -16,7 +16,7 @@ function ProductHome() {
         const res = await axios.get(getProductRoute);
         if(res.data.products){
           setAllProduct(res.data.products);
-          setIsLoading("No item ");
+          setIsLoading("No item with this name");
         }
       
       } catch (err) {
