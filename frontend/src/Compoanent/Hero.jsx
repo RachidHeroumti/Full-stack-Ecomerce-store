@@ -4,6 +4,7 @@ import PIC3 from "../assets/pic3.png"
 import { EcoState } from '../Context/EcoProvider'
 import { getCategories } from "../RoutersApi/ApiRoutes"
 import axios from 'axios'
+import { categories } from '../data/data'
 
 function Hero() {
   const { searchdata, setProductDetails, setAllProduct, allProduct } = EcoState()
@@ -93,7 +94,7 @@ const onGetProductByCategory=(categoryId)=>{
 
 
 
-      <div id='explore' className='p-2 rounded-sm bg-red-50  flex flex-col sm:m-12 my-4  sm:space-y-4  sm:pt-12'>
+   {categories &&   <div id='explore' className='p-2 rounded-sm bg-red-50  flex flex-col sm:m-12 my-4  sm:space-y-4  sm:pt-12'>
         <h4 className='  text-center text-xl sm:text-5xl font-bold text-gray-800'>
           <span className=' text-red-600 px-1 '>Popular</span> Categories</h4>
         <p className='text-center p-1 mb-3 sm:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt assumenda est animi quas dolor
@@ -110,7 +111,7 @@ const onGetProductByCategory=(categoryId)=>{
                 <img src={item.image} alt='img'
                   className=' w-[100px] h-[100px] rounded-full  ' />
                 <h4 className='  sm:text-2xl text-gray-950 text-center  p-2'>{item.name} </h4>
-                <p className='text-sm sm:text-xl text-gray-500 p-1'>{item.description}</p>
+                {/* <p className='text-sm sm:text-xl text-gray-500 p-1'>{item.description}</p> */}
 
               </div>
             )
@@ -128,7 +129,7 @@ const onGetProductByCategory=(categoryId)=>{
           </button>
         </div>
 
-      </div>
+      </div>}
 
 
 
