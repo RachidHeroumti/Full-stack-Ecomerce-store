@@ -99,7 +99,7 @@ const onGetProductByCategory=(categoryId)=>{
           <span className=' text-red-600 px-1 '>Popular</span> Categories</h4>
         <p className='text-center p-1 mb-3 sm:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt assumenda est animi quas dolor
           commodi dolorem magni. </p>
-        <div className=' grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2  p-1 sm:p-4'>
+        <div className=' grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-5  p-1 sm:p-4'>
 
           {category&&ListCategories.map((item, i) => {
 

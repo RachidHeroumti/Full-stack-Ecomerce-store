@@ -8,7 +8,7 @@ import axios from 'axios';
 import { AddcardRoute } from '../RoutersApi/ApiRoutes';
 
 
-function CardItem({products}) {
+function CardItem({products,isLoading}) {
 
     const {  setProductDetails , userToken } = EcoState()
     const navigate = useNavigate();
@@ -58,7 +58,7 @@ function CardItem({products}) {
     }
   }
   if(products.length===0){
-    return <h1 className=' text-2xl text-black text-center font-bold'>Loading ...</h1>
+    return <h1 className=' text-2xl text-black text-center font-bold'>{isLoading}</h1>
   }
   return (
     <div className=' grid lg:grid-cols-4 md:grid-cols-2 gap-6' id='shop'>

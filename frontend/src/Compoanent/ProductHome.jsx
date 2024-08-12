@@ -7,7 +7,7 @@ import { getProductRoute, AddcardRoute } from '../RoutersApi/ApiRoutes'
 import CardItem from './CardItem'
 
 function ProductHome() {
-  
+  const[isLoading,setIsLoading]=useState("Loading ...");
   const { searchdata, setAllProduct, userToken } = EcoState()
   useEffect(() => {
 
@@ -37,7 +37,7 @@ function ProductHome() {
    {  searchdata&& <h1 className=' text-xl md:text-3xl xl:text-5xl font-bold text-red-400 p-4 sm:p-10'
       >Our-<span className=' text-gray-900 '>best Product</span></h1>
    }
-     <CardItem products={searchdata}/>
+     <CardItem products={searchdata} isLoading={isLoading}/>
    
     </div>
   )
