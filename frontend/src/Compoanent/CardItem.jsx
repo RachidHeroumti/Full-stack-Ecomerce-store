@@ -57,7 +57,7 @@ function CardItem({products,isLoading}) {
       Authorization: `Bearer ${userToken}`,
     }
   }
-  if(products.length===0){
+  if(products.length===0&&isLoading=="Loading ..."){
     return <h1 className=' text-4xl text-black text-center font-semibold'>{isLoading}</h1>
   }
   return (

@@ -37,12 +37,15 @@ export const getPaymentCardInfo = async (req,res)=>{
   const stripe =new Stripe("") ;
   const {amount} =req.body;
 
+    
+   
   try{
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: 'usd',
     });
-    return send
+     
+    return  res.json({ clientSecret: paymentIntent.client_secret });
 
   }catch(err){
     console.log(err);
