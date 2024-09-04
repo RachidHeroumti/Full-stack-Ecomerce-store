@@ -89,7 +89,7 @@ function Address() {
 
     <div className='max-w-[1640px] p-5'>
 
-      <div className=''>
+      <div className='pt-12'>
         <h1 className=' md:text-3xl text-xl font-bold py-6'>Shipping Address</h1>
         <div className=' bg-gray-50 shadow-sm p-4'>
           {/* country  */}

@@ -104,7 +104,7 @@ for (; key = keys[i]; i++) {
   }
 
   return (
-    <div className='max-w-[1640px] mx-auto p-1 '>
+    <div className='max-w-[1640px] mx-auto p-1 pb-16 '>
       <div className='max-w-[1640px] mx-auto pt-10  mt-12 space-y-2'>
         {dataIncart.map((product, i) => {
           return (
@@ -142,7 +142,7 @@ for (; key = keys[i]; i++) {
 
       </div>
 
-      <div className='p-2 text-white sm:flex'>
+      <div className='p-2 text-white sm:flex fixed bottom-0 start-0 end-0 bg-slate-50'>
         <div className=' flex space-x-3 text-xl p-3 w-full'>
           <h1 className='text-xl font-semibold text-gray-900 '>SubTotal <span> ({dataIncart.length} item)</span></h1>
           <h2 className=' text-red-700 text-2xl font-extrabold '>{total}<span> $$</span></h2>
