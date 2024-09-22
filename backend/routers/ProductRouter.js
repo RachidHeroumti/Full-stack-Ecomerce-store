@@ -6,9 +6,10 @@
   
  route.get("/products",getProducts);
  route.get("/product/:id",getProduct);
- route.post("/product",protect,ProtectForAdmin,createProduct);
+ route.post("/product/create/",protect,ProtectForAdmin,createProduct);
  route.get("/products/category/:{category}",getProductByCategory);
- route.post("/product/:id",protect,ProtectForAdmin,updateProduct);
+ //
+ route.post("/product-update/:id",protect,ProtectForAdmin,updateProduct);
 
  export default route ;
 
