@@ -2,16 +2,16 @@ import { BrowserRouter, Route, Router, Routes } from "react-router-dom"
 import Home from "./Pages/Home"
 import Register from "./Pages/Register"
 import Login from "./Pages/Login"
-import Details from './Compoanent/Details'
+import Details from './Compoanent/productComponent/Details'
 import "react-toastify/dist/ReactToastify.css";
 import { EcoState } from './Context/EcoProvider'
-import CartItems from './Compoanent/CartItems'
-import Address from './Compoanent/Address'
-import Order from './Compoanent/Order'
+import CartItems from './Compoanent/productComponent/CartItems'
+import Address from './Compoanent/orderComponent/Address'
+import Order from './Compoanent/orderComponent/Order'
 import NavBar from './Compoanent/common/NavBar'
 
 function App() {
-  const { productDetails, address, dataToBay } = EcoState();
+  const { productDetails, address } = EcoState();
 
   return (
     <BrowserRouter>

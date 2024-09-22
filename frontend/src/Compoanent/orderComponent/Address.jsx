@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { countyCode } from '../data/data'
+import { countyCode } from '../../data/data'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify"
-import { EcoState } from "../Context/EcoProvider"
+import { EcoState } from "../../Context/EcoProvider"
 import axios from 'axios'
-import { addAddressRoute } from '../RoutersApi/ApiRoutes'
+import { addAddressRoute } from '../../RoutersApi/ApiRoutes'
 import Cookies from 'js-cookie'
 
 function Address() {

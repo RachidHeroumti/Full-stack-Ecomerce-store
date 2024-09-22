@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
-
-import { EcoState } from '../Context/EcoProvider'
+import { EcoState } from '../../Context/EcoProvider'
 import axios from 'axios'
-import { getProductRoute, AddcardRoute } from '../RoutersApi/ApiRoutes'
+import { getProductRoute, AddcardRoute } from '../../RoutersApi/ApiRoutes'
 import CardItem from './CardItem'
+
+
 
 function ProductHome() {
   const[isLoading,setIsLoading]=useState("Loading ...");
@@ -15,7 +15,9 @@ function ProductHome() {
       try {
         const res = await axios.get(getProductRoute);
         if(res.data.products){
+          console.log("products came for db :",res.data)
           setAllProduct(res.data.products);
+          // if the list empty when you search 
           setIsLoading("No item with this name");
         }
       

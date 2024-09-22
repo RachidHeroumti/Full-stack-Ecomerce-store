@@ -3,7 +3,7 @@ import { AiFillDelete } from 'react-icons/ai'
 import { FaCcVisa, FaPaypal } from 'react-icons/fa'
 import { FaCcMastercard } from 'react-icons/fa6'
 import { ToastContainer, toast } from "react-toastify"
-import { EcoState } from '../Context/EcoProvider'
+import { EcoState } from '../../Context/EcoProvider'
 import { useNavigate } from 'react-router-dom'
 
 

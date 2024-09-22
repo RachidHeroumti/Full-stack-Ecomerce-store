@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { EcoState } from '../Context/EcoProvider';
+import { EcoState } from '../../Context/EcoProvider';
 import { useNavigate } from 'react-router-dom';
 import { BsFillCartFill } from "react-icons/bs"
 import { AiFillCaretRight, AiFillDelete } from "react-icons/ai"
 
 import axios from 'axios'
-import { deletFromCardRoute, getcardRoute } from '../RoutersApi/ApiRoutes'
+import { deletFromCardRoute, getcardRoute } from '../../RoutersApi/ApiRoutes'
 import cookies from 'js-cookie'
 
 function CardItems() {
