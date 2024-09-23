@@ -7,7 +7,7 @@ import axios from 'axios'
 import { categories } from '../data/data'
 
 function Hero() {
-  const { searchdata, setProductDetails, setAllProduct, allProduct } = EcoState()
+  const { searchdata, setProductDetails, setAllProduct, allProduct ,setSearchData} = EcoState()
   const [category, setCategory] = useState([]);
   const[ListCategories,setListCategory]=useState([]);
   const [showallcategories, setShowAllCategories] = useState(false);
@@ -97,7 +97,8 @@ const onGetProductByCategory=(categoryId)=>{
    {categories &&   <div id='explore' className='p-2 rounded-sm bg-red-50  flex flex-col sm:m-12 my-4  sm:space-y-4  sm:pt-12'>
         <h4 className='  text-center text-xl sm:text-5xl font-bold text-gray-800'>
           <span className=' text-red-600 px-1 '>Popular</span> Categories</h4>
-        <p className='text-center p-1 mb-3 sm:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt assumenda est animi quas dolor
+        <p className='text-center p-1 mb-3 sm:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           Deserunt assumenda est animi quas dolor
           commodi dolorem magni. </p>
         <div className=' grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-5  p-1 sm:p-4'>
 
