@@ -6,7 +6,7 @@ A powerful e-commerce store website built with React.js, Node.js, Express.js, an
  providing users with a seamless shopping experience. With advanced product management, real-time inventory updates,
  and comprehensive customer support, it ensures a robust and scalable solution for online retail.
 
-- built with React JS and firebase
+- built with React JS/tailwindCss and Nodejs/ExpressJs /Mongodb
 - User-friendly interface  
 
 ## Getting Started
