@@ -6,8 +6,13 @@ export default {
   theme: {
     color: {
       "backNav": "#115e59",
+      'primary':'#282828'
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'], 
+      },
+    },
   },
   plugins: [require('tailwind-scrollbar'),],
 }

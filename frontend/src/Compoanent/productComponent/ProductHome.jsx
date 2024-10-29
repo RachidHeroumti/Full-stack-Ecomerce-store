@@ -34,10 +34,10 @@ function ProductHome() {
 
 
   return (
-    <div id='shop' className='max-w-[1640px] mx-auto bg-red-50 px-5 '>
+    <div id='shop' className=' mx-auto bg-red-50 py-[72px] px-10 container  flex flex-col justify-center '>
 
-   {  searchdata&& <h1 className=' text-xl md:text-3xl xl:text-5xl font-bold text-red-400 p-4 sm:p-10'
-      >Our-<span className=' text-gray-900 '>best Product</span></h1>
+   {  searchdata&& <h1 className=' text-xl md:text-3xl  font-medium text-red-400 '
+      ><span className=' text-gray-900  '>Featured Products</span></h1>
    }
      <CardItem products={searchdata} isLoading={isLoading}/>
    

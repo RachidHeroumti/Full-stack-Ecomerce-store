@@ -9,6 +9,8 @@ import CartItems from './Compoanent/productComponent/CartItems'
 import Address from './Compoanent/orderComponent/Address'
 import Order from './Compoanent/orderComponent/Order'
 import NavBar from './Compoanent/common/NavBar'
+import '@fontsource/poppins'; 
+
 
 function App() {
   const { productDetails, address } = EcoState();

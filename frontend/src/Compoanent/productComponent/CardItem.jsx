@@ -60,7 +60,7 @@ function CardItem({products,isLoading}) {
     }
   }
   if(products.length===0&&isLoading=="Loading ..."){
-    return <h1 className=' text-4xl text-black text-center font-semibold'>{isLoading}</h1>
+    return <h1 className=' text-xl text-black text-center font-semibold'>{isLoading}</h1>
   }
   return (
     <div className=' grid lg:grid-cols-4 md:grid-cols-2 gap-6' id='shop'>
@@ -72,8 +72,8 @@ function CardItem({products,isLoading}) {
               <img src={product.image} alt=''
                 className='rounded-lg  w-full h-[250px] ' />
               <div className='p-3 text-gray-900'>
-                <h2 className=' sm:text-2xl text-xl  font-semibold h-[60px] '>{product.title}</h2>
-                <h2 className='text-xl xl:text-2xl font-bold text-orange-700'> {product.price}<span> $$</span></h2>
+                <h2 className='text-xl  font-medium h-[40px] '>{product.title}</h2>
+                <h2 className='text-xl  font-semibold text-orange-700'> {product.price}<span> $$</span></h2>
                 <p className=" text-gray-600" >Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Ut id iure blanditiis, quasi eos porro, natus ex omnis enim,
                 </p>
