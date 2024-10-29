@@ -112,7 +112,10 @@ function Hero() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
             assumenda est animi quas dolor commodi dolorem magni.{" "}
           </p>
-          <div className=" gap-5 flex overflow-x-scroll  scroll-smooth">
+          <div
+            className=" gap-5 flex overflow-x-scroll  scrollbar-thumb-red-200 scrollbar-thin 
+          scrollbar-track-slate-50   scroll-smooth"
+          >
             {category &&
               ListCategories.map((item, i) => {
                 return (
