@@ -68,9 +68,12 @@ function NavBar() {
               />
             }
           </div>
-          <h1 className=" text-xl font-bold px-3 hidden xl:flex text-gray-800">
+          <a
+            href="/"
+            className=" text-xl font-bold px-3 hidden xl:flex text-gray-800"
+          >
             Shop Onlay
-          </h1>
+          </a>
         </div>
         <div className=" bg-transparnt text-black flex items-center rounded-lg md:px-3 space-x-1">
           <AiOutlineSearch

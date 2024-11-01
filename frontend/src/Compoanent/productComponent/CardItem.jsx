@@ -86,9 +86,8 @@ function CardItem({ products, isLoading }) {
                   {product.price}
                   <span> $$</span>
                 </h2>
-                <p className=" text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut id
-                  iure blanditiis, quasi eos porro, natus ex omnis enim,
+                <p className=" text-gray-600 text-sm">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
               </div>
               <div className=" p-2 w-full h-full items-end ">
