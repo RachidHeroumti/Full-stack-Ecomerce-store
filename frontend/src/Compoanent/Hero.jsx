@@ -4,7 +4,7 @@ import PIC3 from "../assets/pic3.png";
 import { EcoState } from "../Context/EcoProvider";
 import { getCategories } from "../RoutersApi/ApiRoutes";
 import axios from "axios";
-import { categories } from "../data/data";
+
 
 function Hero() {
   const {
@@ -62,7 +62,7 @@ function Hero() {
 
   return (
     <div className=" container w-full mx-auto  " id="home">
-      <div className="flex items-center px-10 bg-red-100 ">
+      <div className="flex items-center px-10  ">
         <div className="w-full h-[600px] flex p-12 flex-col justify-center text-gray-900 gap-1">
           <h4 className="  text-2xl md:text-4xl  font-bold">Welecom to </h4>
           <h4 className=" text-2xl md:text-4xl  font-bold"> shop onlay </h4>
@@ -77,8 +77,8 @@ function Hero() {
           <div className="flex flex-col sm:flex-row  sm:space-x-4 my-5 space-y-1 space-x-1">
             <a
               href="#shop"
-              className=" p-1  px-3 text-white justify-center items-center
-            rounded-full bg-red-500 hover:bg-red-600"
+              className=" p-1  px-3 flex text-white justify-center items-center
+            rounded-full bg-orange-500 hover:bg-orange-600"
             >
               Shop Now
             </a>
@@ -100,55 +100,7 @@ function Hero() {
         />
       </div>
 
-      {categories && (
-        <div
-          id="explore"
-          className="rounded-sm bg-red-50  flex flex-col  my-4  sm:space-y-4  sm:pt-12"
-        >
-          <h4 className="  text-center text-xl sm:text-3xl font-medium text-gray-800">
-            <span className=" text-red-600 px-1 ">Popular</span> Categories
-          </h4>
-          <p className="text-center p-1 mb-3 sm:text-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-            assumenda est animi quas dolor commodi dolorem magni.{" "}
-          </p>
-          <div
-            className=" gap-5 flex overflow-x-scroll  scrollbar-thumb-red-200 scrollbar-thin 
-          scrollbar-track-slate-50   scroll-smooth"
-          >
-            {category &&
-              ListCategories.map((item, i) => {
-                return (
-                  <div
-                    key={item._id}
-                    className=" bg-white hover:bg-red-100 min-w-[250px]  rounded shadow-md flex flex-col items-center p-1 sm:p-4 justify-center"
-                    onClick={() => {
-                      onGetProductByCategory(item._id);
-                    }}
-                  >
-                    <img
-                      src={item.image}
-                      alt="img"
-                      className=" w-[100px] h-[100px] rounded-full  "
-                    />
-                    <h4 className="   text-gray-950 text-center  p-2">
-                      {item.name}{" "}
-                    </h4>
-                    {/* <p className='text-sm sm:text-xl text-gray-500 p-1'>{item.description}</p> */}
-                  </div>
-                );
-              })}
-          </div>
-
-          {/* <div className=' flex text-white justify-center items-center'
-          onClick={() => { showallcategories ? setShowAllCategories(false) : setShowAllCategories(true) }}
-        >
-          <button className='text-center bg-gray-900 p-2 rounded-md sm:text-xl'
-          >{showallcategories ? 'Show less' : 'Show more ->'}
-          </button>
-        </div> */}
-        </div>
-      )}
+   
     </div>
   );
 }

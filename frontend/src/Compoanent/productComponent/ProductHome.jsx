@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { EcoState } from '../../Context/EcoProvider'
 import axios from 'axios'
-import { getProductRoute, AddcardRoute } from '../../RoutersApi/ApiRoutes'
+import { getProductRoute } from '../../RoutersApi/ApiRoutes'
 import CardItem from './CardItem'
 
 
 
 function ProductHome() {
   const[isLoading,setIsLoading]=useState("Loading ...");
-  const { searchdata, setAllProduct, userToken } = EcoState()
+  const { searchdata, setAllProduct } = EcoState()
   useEffect(() => {
 
     const getPrs = async () => {
@@ -34,10 +34,10 @@ function ProductHome() {
 
 
   return (
-    <div id='shop' className=' mx-auto bg-red-50 py-[72px] px-10 container  flex flex-col justify-center '>
+    <div id='shop' className='  py-[72px] xl:px-28 px-0 container   '>
 
-   {  searchdata&& <h1 className=' text-xl md:text-3xl  font-medium text-red-400 '
-      ><span className=' text-gray-900  '>Featured Products</span></h1>
+   {  searchdata&& <h1 className=' text-2xl mb-8 font-medium  text-gray-900  text-center w-full'
+      >Featured Products</h1>
    }
      <CardItem products={searchdata} isLoading={isLoading}/>
    

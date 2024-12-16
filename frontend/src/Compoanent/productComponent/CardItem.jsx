@@ -1,17 +1,16 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BsFillCartFill } from "react-icons/bs";
-import { AiFillCaretRight } from "react-icons/ai";
 import axios from "axios";
-
 import { EcoState } from "../../Context/EcoProvider";
 import { AddcardRoute } from "../../RoutersApi/ApiRoutes";
+import { MdStarRate } from "react-icons/md";
 
 function CardItem({ products, isLoading }) {
   const { setProductDetails, userToken } = EcoState();
   const navigate = useNavigate();
+  const [hoveredProductId, setHoveredProductId] = useState(null);
 
   const OnDetailes = (product) => {
     console.log(product);
@@ -29,15 +28,14 @@ function CardItem({ products, isLoading }) {
         );
 
         console.log("To add to card ", res);
-        if ((res.status = 200)) {
-          toast.success("Add to cart successfuly ", toastOptions);
+        if (res.status === 200) {
+          toast.success("Add to cart successfully", toastOptions);
         }
       } catch (err) {
         console.log(err);
       }
     } else {
       const id = product._id;
-
       localStorage.setItem(id, JSON.stringify(product));
       toast.success("Added to cart successfully", toastOptions);
     }
@@ -55,66 +53,66 @@ function CardItem({ products, isLoading }) {
       Authorization: `Bearer ${userToken}`,
     },
   };
-  if (products.length === 0 && isLoading == "Loading ...") {
+
+  if (products.length === 0 && isLoading === "Loading ...") {
     return (
-      <h1 className=" text-xl text-black text-center font-semibold">
+      <h1 className="text-xl text-black text-center font-semibold">
         {isLoading}
       </h1>
     );
   }
+
   return (
-    <div className=" grid lg:grid-cols-4 md:grid-cols-2 gap-6" id="shop">
+    <div className="grid lg:grid-cols-4 xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-2 md:gap-6" id="shop">
       {products &&
-        products.map((product, i) => {
+        products.map((product) => {
           return (
             <div
               key={product._id}
-              className="rounded-lg shadow-lg  hover:scale-105 duration-300 bg-white 
-             border text-gray-900  "
+              onClick={() => OnDetailes(product)}
+              style={{
+                color: "rgb(42, 43, 42)", // Corrected the typo and ensured the value is a string
+              }}
+              className="rounded   w-full relative  pb-10  "
+              onMouseOver={() => setHoveredProductId(product._id)}
+              onMouseLeave={() => setHoveredProductId(null)}
             >
               <img
                 src={product.image}
                 alt=""
-                className="rounded-lg  w-full h-[250px] "
+                className="rounded-sm w-full h-[250px] object-cover"
               />
-              <div className="p-3 text-gray-900">
-                <h2 className="text-xl  font-medium h-[40px] truncate">
+              <div className="p-3 ">
+                <h2 className="text-xl font-medium ">
                   {product.title}
                 </h2>
-                <h2 className="text-xl  font-semibold text-orange-700">
-                  {" "}
+                <h2 className="text-xl font-semibold mt-3">
                   {product.price}
                   <span> $$</span>
                 </h2>
-                <p className=" text-gray-600 text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
+                <div className=" mt-3 flex space-x-2">
+                <MdStarRate size={16} className=" text-gray-800"/>
+                <MdStarRate size={16} className=" text-gray-800"/>
+                <MdStarRate size={16} className=" text-gray-800"/>
+                <MdStarRate size={16} className=" text-gray-800"/>
+                <MdStarRate size={16} className=" text-gray-400"/>
+                <span className="">(2)</span>
+                </div>
               </div>
-              <div className=" p-2 w-full h-full items-end ">
-                <div className=" flex  text-gray-900  w-full   space-x-2  bottom-0 left-0">
-                  <button
-                    onClick={() => {
-                      OnDetailes(product);
-                    }}
-                    className="flex items-center border hover:bg-red-400 hover:text-white  w-full border-gray-200
-                     rounded
-                    text-center px-3 py-1    "
-                  >
-                    <AiFillCaretRight className="mx-1" />
-                    Details
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      AddToCart(product);
-                    }}
-                    className="flex items-center border hover:bg-red-400 hover:text-white  w-full border-gray-200
-                     rounded
-                    text-center px-3 py-1  "
-                  >
-                    {/* { <BsFillCartFill size={30} className='mx-1 text-yellow-400' />} */}
-                    Add to Cart
-                  </button>
+              <div className="p-2 w-full  items-end">
+                <div className="flex  w-full space-x-2 ">
+                  
+                   <button
+                   onClick={(e) => {
+                     e.stopPropagation();
+                     AddToCart(product);
+                   }}
+                  
+                   className="flex absolute  bottom-2 left-2 right-2 bg-orange-500 rounded-full
+                    text-white  items-center  justify-center text-center w-full p-2"
+                 >
+                   Add to Cart
+                 </button>
                 </div>
               </div>
             </div>

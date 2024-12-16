@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function DashboardAdmin() {
 
@@ -20,7 +20,7 @@ export default function DashboardAdmin() {
       <main className="flex-1 p-8">
         <header className="mb-8">
           <h2 className="text-3xl font-semibold">Welcome, Admin</h2>
-          <p className="text-gray-600">Here's a quick overview of your dashboard.</p>
+          <p className="text-gray-600">Here s a quick overview of your dashboard.</p>
         </header>
 
         {/* Stats Section */}
