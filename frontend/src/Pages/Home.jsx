@@ -13,9 +13,10 @@ function Home() {
   return (
     <div
       className="max-w-[1640]  bg-white container 
-           font-poppins  xl:px-5 px-0"
+           font-poppins  "
     >
       <TopHeader/>
+      <div className=" xl:px-28 px-0"> 
       <Hero />
       <ListCollection />
       <SrinkListCollection />
@@ -23,6 +24,7 @@ function Home() {
       <Collection2 />
       <ProductHome />
       <ToastContainer />
+      </div>
     </div>
   );
 }

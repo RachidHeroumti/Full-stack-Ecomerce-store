@@ -11,7 +11,7 @@ import Order from "./Compoanent/orderComponent/Order";
 import NavBar from "./Compoanent/common/NavBar";
 import DashbordAdmin from "./Compoanent/dashbordComponent/DashbordAdmin";
 import DashbordSeller from "./Compoanent/dashbordComponent/DashbordSeller";
-import UserProfile from "./Compoanent/dashbordComponent/DashbordSeller";
+import UserProfile from "./Compoanent/dashbordComponent/UserProfile";
 import "@fontsource/poppins";
 import Footer from "./Compoanent/common/Footer";
 import BFoote from "./Compoanent/common/bFooter";
