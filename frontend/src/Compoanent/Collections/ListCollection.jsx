@@ -3,6 +3,7 @@ import { categories } from "../../data/data";
 import { EcoState } from "../../Context/EcoProvider";
 import { getCategories } from "../../RoutersApi/ApiRoutes";
 import axios from "axios";
+import "./style.css";
 
 function ListCollection() {
     const {
@@ -60,7 +61,7 @@ function ListCollection() {
 
       
   return (
-    <div className=' '>
+    <div className='ls-collection'>
          {categories && (
         <div
           id="explore"

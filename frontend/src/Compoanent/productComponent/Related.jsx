@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function OneCollection() {
+function Related() {
   return (
     <div>
       
     </div>
   )
 }
+
+export default Related

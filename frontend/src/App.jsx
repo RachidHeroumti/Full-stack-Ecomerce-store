@@ -13,6 +13,8 @@ import DashbordAdmin from "./Compoanent/dashbordComponent/DashbordAdmin";
 import DashbordSeller from "./Compoanent/dashbordComponent/DashbordSeller";
 import UserProfile from "./Compoanent/dashbordComponent/DashbordSeller";
 import "@fontsource/poppins";
+import Footer from "./Compoanent/common/Footer";
+import BFoote from "./Compoanent/common/bFooter";
 
 function App() {
   const { productDetails, address } = EcoState();
@@ -28,6 +30,8 @@ function App() {
             <>
               <NavBar />
               <Home />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -37,6 +41,8 @@ function App() {
             <>
               <NavBar />
               <Details product={productDetails} />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -46,6 +52,8 @@ function App() {
             <>
               <NavBar />
               <CartItems />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -55,6 +63,8 @@ function App() {
             <>
               <NavBar />
               <Address />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -64,6 +74,8 @@ function App() {
             <>
               <NavBar />
               <Order addressInfo={address} />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -74,6 +86,8 @@ function App() {
             <>
               <NavBar />
               <DashbordAdmin />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -83,6 +97,8 @@ function App() {
             <>
               <NavBar />
               <DashbordSeller />
+              <BFoote />
+              <Footer />
             </>
           }
         />
@@ -93,6 +109,8 @@ function App() {
             <>
               <NavBar />
               <UserProfile />
+              <BFoote />
+              <Footer />
             </>
           }
         />

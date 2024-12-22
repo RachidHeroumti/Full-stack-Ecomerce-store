@@ -236,7 +236,7 @@ function Details({ product }) {
         </h1>
       </div>
 
-      <CardItem products={searchdata} />
+    
       <ToastContainer />
     </div>
   );

@@ -7,12 +7,13 @@ import { EcoState } from "../../Context/EcoProvider";
 import { AddcardRoute } from "../../RoutersApi/ApiRoutes";
 import { MdStarRate } from "react-icons/md";
 
-function CardItem({ products, isLoading }) {
+
+function CardItem({ product, isLoading }) {
   const { setProductDetails, userToken } = EcoState();
   const navigate = useNavigate();
   const [hoveredProductId, setHoveredProductId] = useState(null);
 
-  const OnDetailes = (product) => {
+  const OnDetailes = () => {
     console.log(product);
     setProductDetails(product);
     navigate("/details");
@@ -54,22 +55,12 @@ function CardItem({ products, isLoading }) {
     },
   };
 
-  if (products.length === 0 && isLoading === "Loading ...") {
-    return (
-      <h1 className="text-xl text-black text-center font-semibold">
-        {isLoading}
-      </h1>
-    );
-  }
 
-  return (
-    <div className="grid lg:grid-cols-4 xl:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-2 md:gap-6" id="shop">
-      {products &&
-        products.map((product) => {
+ 
           return (
             <div
               key={product._id}
-              onClick={() => OnDetailes(product)}
+              onClick={() => OnDetailes()}
               style={{
                 color: "rgb(42, 43, 42)", // Corrected the typo and ensured the value is a string
               }}
@@ -90,12 +81,12 @@ function CardItem({ products, isLoading }) {
                   {product.price}
                   <span> $$</span>
                 </h2>
-                <div className=" mt-3 flex space-x-2">
-                <MdStarRate size={16} className=" text-gray-800"/>
-                <MdStarRate size={16} className=" text-gray-800"/>
-                <MdStarRate size={16} className=" text-gray-800"/>
-                <MdStarRate size={16} className=" text-gray-800"/>
-                <MdStarRate size={16} className=" text-gray-400"/>
+                <div className=" mt-3 flex space-x-1">
+                <MdStarRate size={15} className=" text-gray-800"/>
+                <MdStarRate size={15} className=" text-gray-800"/>
+                <MdStarRate size={15} className=" text-gray-800"/>
+                <MdStarRate size={15} className=" text-gray-800"/>
+                <MdStarRate size={15} className=" text-gray-400"/>
                 <span className="">(2)</span>
                 </div>
               </div>
@@ -117,9 +108,6 @@ function CardItem({ products, isLoading }) {
               </div>
             </div>
           );
-        })}
-    </div>
-  );
 }
 
 export default CardItem;

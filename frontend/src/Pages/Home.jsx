@@ -1,24 +1,30 @@
-import React from 'react'
-import NavBar from "../Compoanent/common/NavBar"
-import Hero from '../Compoanent/Hero'
-import ProductHome from '../Compoanent/productComponent/ProductHome'
-import { ToastContainer } from 'react-toastify'
-import Footer from '../Compoanent/common/Footer'
-import BFooter from "../Compoanent/bFooter"
-import ListCollection from '../Compoanent/Collections/ListCollection'
+import NavBar from "../Compoanent/common/NavBar";
+import Hero from "../Compoanent/Hero";
+import ProductHome from "../Compoanent/productComponent/ProductHome";
+import { ToastContainer } from "react-toastify";
+
+import ListCollection from "../Compoanent/Collections/ListCollection";
+import TopHeader from "../Compoanent/common/TopHeader";
+import Collection2 from "../Compoanent/Collections/Collection2";
+import SrinkListCollection from "../Compoanent/Collections/SrinkListCollection";
+
+
 function Home() {
   return (
-    <div className='max-w-[1640] scrollbar-thumb-red-200 scrollbar-thin bg-white
-          scrollbar-track-slate-50 h-screen overflow-y-scroll font-poppins'>
-      <NavBar />
+    <div
+      className="max-w-[1640]  bg-white container 
+           font-poppins  xl:px-5 px-0"
+    >
+      <TopHeader/>
       <Hero />
-      <ListCollection/>
+      <ListCollection />
+      <SrinkListCollection />
       <ProductHome />
-      <BFooter />
-      <Footer />
+      <Collection2 />
+      <ProductHome />
       <ToastContainer />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

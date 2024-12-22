@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "react-awesome-slider": "^4.1.0"
+  },
+  "devDependencies": {
+    "postcss-nesting": "^13.0.1"
   }
 }

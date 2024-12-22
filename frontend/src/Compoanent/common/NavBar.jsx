@@ -8,7 +8,6 @@ import { FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { EcoState } from "../../Context/EcoProvider";
 import { useWindowSize } from "@react-hook/window-size";
-import { RiAccountCircleFill } from "react-icons/ri";
 import { BsMinecart } from "react-icons/bs";
 import { IoMdPeople } from "react-icons/io";
 function NavBar() {
@@ -49,7 +48,7 @@ function NavBar() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center h-20 fixed start-0 top-0 end-0  z-50  text-white ">
+    <div className="w-full flex  justify-center h-20   text-white ">
       <div
         className=" container flex items-center justify-between bg-slate-700 
          w-full"
