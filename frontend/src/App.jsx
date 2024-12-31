@@ -9,12 +9,12 @@ import CartItems from "./Compoanent/productComponent/CartItems";
 import Address from "./Compoanent/orderComponent/Address";
 import Order from "./Compoanent/orderComponent/Order";
 import NavBar from "./Compoanent/common/NavBar";
-import DashbordAdmin from "./Compoanent/dashbordComponent/DashbordAdmin";
 import DashbordSeller from "./Compoanent/dashbordComponent/DashbordSeller";
 import UserProfile from "./Compoanent/dashbordComponent/UserProfile";
 import "@fontsource/poppins";
 import Footer from "./Compoanent/common/Footer";
 import BFoote from "./Compoanent/common/bFooter";
+import DashboardAdmin from "./Compoanent/dashbordComponent/DashbordAdmin";
 
 function App() {
   const { productDetails, address } = EcoState();
@@ -84,10 +84,7 @@ function App() {
           path="/dashbord-admin"
           element={
             <>
-              <NavBar />
-              <DashbordAdmin />
-              <BFoote />
-              <Footer />
+              <DashboardAdmin/>
             </>
           }
         />
