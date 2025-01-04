@@ -41,6 +41,35 @@ const getProducts = async () => {
   return products;
 };
 
+// with pagination 
+// const getProducts = async (page = 1, limit = 10) => {
+//   // Ensure page and limit are positive integers
+//   const pageNumber = Math.max(1, parseInt(page, 10)); // Default to 1 if invalid
+//   const limitNumber = Math.max(1, parseInt(limit, 10)); // Default to 1 if invalid
+
+//   try {
+//     const products = await Product.find()
+//       .skip((pageNumber - 1) * limitNumber) // Skip documents for previous pages
+//       .limit(limitNumber); // Limit the number of documents returned
+
+//     const totalProducts = await Product.countDocuments(); // Get total count of products
+//     const totalPages = Math.ceil(totalProducts / limitNumber);
+
+//     if (!products || products.length === 0) {
+//       throw new Error("No products found!");
+//     }
+
+//     return {
+//       products,
+//       currentPage: pageNumber,
+//       totalPages,
+//       totalProducts,
+//     };
+//   } catch (error) {
+//     throw new Error(error.message || "Failed to fetch products.");
+//   }
+// };
+
 const getProductByCategory = async (category) => {
   const products = await Product.find({ category });
   if (!products || products.length === 0) {

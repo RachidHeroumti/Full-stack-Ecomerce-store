@@ -9,6 +9,8 @@ import OrderRoute from "./routers/OrderRoute.js"
 import PaymentCardRoute from "./routers/PaymentcardRoute.js"
 import connectDB from "./configs/db.js"
 import AddressRoute from './routers/AddressRoute.js'
+import RoleRoute from './routers/RoleRoute.js'
+
 
 dotenv.config();
 const app=express();
@@ -27,7 +29,7 @@ app.use("/api/cart",CartRoute);
 app.use("/api/order",OrderRoute);
 app.use("/api/address",AddressRoute);
 app.use("/api/paymentcard",PaymentCardRoute);
-
+app.use("/api/role",RoleRoute);
 
 
 app.listen(PORT,()=>{
