@@ -1,13 +1,10 @@
-import express from 'express';
-import { createRole,getRolles}  from'../controllers/RoleController.js';
-import { protect, ProtectForAdmin } from '../tools/authMiddlware.js';
+import express from "express";
+import { createRole, getRolles } from "../controllers/RoleController.js";
+import { protect, ProtectForAdmin } from "../middelware/authMiddlware.js";
 
-const route=express.Router();
+const route = express.Router();
 
-route.post('/create',createRole);
-route.get('/get-all',getRolles);
+route.post("/create", createRole);
+route.get("/get-all", getRolles);
 
-
-export default route ;
-
-
+export default route;

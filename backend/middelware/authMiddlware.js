@@ -47,3 +47,20 @@ export const ProtectForAdmin=async(req,res,next)=>{
     //throw new Error("Not authorized,Verification Error !");
    }
 }
+export const ProtectSallers=async(req,res,next)=>{
+  const id=req.user._id;
+  try{
+    const user =await User.findById(id).select("-password");
+     if(user.role==='saler'){
+      // req.user=user;
+     next();
+     }
+     else{
+   res.status(401).json({message:"You 're not allowed to here !"});
+     }
+      
+  }catch(err){
+    res.status(401).json({ message:"Not authorized,Verification Error !"});
+   //throw new Error("Not authorized,Verification Error !");
+  }
+}
