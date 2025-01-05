@@ -12,7 +12,7 @@ import NavBar from "./Compoanent/common/NavBar";
 import "@fontsource/poppins";
 import Footer from "./Compoanent/common/Footer";
 import BFoote from "./Compoanent/common/bFooter";
-
+import Shop  from "./Pages/Shop"
 function App() {
   const { productDetails, address } = EcoState();
 
@@ -27,6 +27,17 @@ function App() {
             <>
               <NavBar />
               <Home />
+              <BFoote />
+              <Footer />
+            </>
+          }
+        />
+         <Route
+          path="/shop"
+          element={
+            <>
+              <NavBar />
+              <Shop/>
               <BFoote />
               <Footer />
             </>

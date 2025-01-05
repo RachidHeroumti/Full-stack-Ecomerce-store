@@ -178,7 +178,7 @@ for (; key = keys[i]; i++) {
       </div>
 
 
-      <div className='md-:w-1/3 w-full flex flex-col pt-5'>
+      <div className='md:w-1/3 w-full flex flex-col pt-5'>
       <div className=' border  p-3 md:p-8 sticky'> 
         <h2 className=' text-xl font-semibold pb-5 border-b mb-5 '>Order summary</h2>
         <p className='mb-5'>Tax included, shipping and discounts calculated at checkout.
