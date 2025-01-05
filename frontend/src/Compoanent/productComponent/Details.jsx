@@ -101,7 +101,7 @@ function Details({ product }) {
                         src={image}
                         alt={`Product Image ${index + 1}`}
                         onClick={() => setImagePr(image)}
-                        className=" cursor-pointer rounded-md hover:scale-105 transition-transform duration-200"
+                        className= "h-[250] w-full  md:h-[500px] md:w-[500px] cursor-pointer rounded-md hover:scale-105 transition-transform duration-200"
                       />
                     </SwiperSlide>
                   ))}
@@ -123,7 +123,7 @@ function Details({ product }) {
             </div>
           </div>
 
-          <div className="md:w-1/2 p-4 flex flex-col text-slate-800">
+          <div className="md:w-1/2  flex flex-col text-slate-800">
             <div className="">
               <h2 className="sm:text-2xl text-xl font-bold pb-2 px-2 truncate capitalize">
                 {product.title}
