@@ -12,7 +12,7 @@ import SrinkListCollection from "../Compoanent/Collections/SrinkListCollection";
 function Home() {
   return (
     <div
-      className="max-w-[1640]  bg-white container 
+      className=" 
            font-poppins  "
     >
       <TopHeader/>

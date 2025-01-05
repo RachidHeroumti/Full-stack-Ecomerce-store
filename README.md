@@ -16,9 +16,9 @@ A powerful e-commerce store website built with React.js, Node.js, Express.js, an
 
 2. **Installation:**
     - Clone the repository: `git clone https://github.com/rachidcooder/Full-stack-Ecomerce-store`
-    - Navigate to the project directory: ./
+    - Navigate to the project directory: ./backend or ./frontend ./admin
     - Install dependencies: `npm install`
 
 3. **Running the App:**
-    - Start the development client: `npm run dev`
+    - Start the development client: `npm run dev` for backend use `npm start`
     - set node with mongodb (MongoAtlas) 

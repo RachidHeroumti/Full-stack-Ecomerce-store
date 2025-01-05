@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { EcoState } from '../../Context/EcoProvider';
 import { useNavigate } from 'react-router-dom';
-import { BsFillCartFill } from "react-icons/bs"
-import { AiFillCaretRight, AiFillDelete } from "react-icons/ai"
-
+import { RiDeleteBin5Line } from "react-icons/ri";
 import axios from 'axios'
 import { deletFromCardRoute, getcardRoute } from '../../RoutersApi/ApiRoutes'
-import cookies from 'js-cookie'
 
 function CardItems() {
   const { setProductDetails, userToken, setDataToBay } = EcoState();
   const [total, setTotal] = useState(0);
   const [dataIncart, setDataIncart] = useState([]);
+    const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
 
@@ -96,6 +94,10 @@ for (; key = keys[i]; i++) {
       })
     );
   }
+  const handleQuantityChange = (e) => {
+    const newValue = parseInt(e.target.value, 10);
+    setQuantity(newValue);
+  };
 
   // for buy
   const OnBuy = () => {
@@ -104,30 +106,63 @@ for (; key = keys[i]; i++) {
   }
 
   return (
-    <div className='max-w-[1640px] mx-auto p-1 pb-16 '>
-      <div className='max-w-[1640px] mx-auto pt-10  mt-12 space-y-2'>
+    <div className='justify-between gap-10  flex p-1 container font-poppins h-full '>
+      <div className=' w-2/3 space-y-2 h-full'>
         {dataIncart.map((product, i) => {
           return (
 
-            <div key={product._id} className=' flex my-1 bg-gray-100 p-2  rounded-sm '>
+            <div key={product._id} className=' flex my-1  gap-4 border-b p-5  text-gray-800 '>
+              <div className=''>
               <img src={product.image} alt=''
-                className='rounded-lg h-[150px] w-[100px] ' />
-              <div className=' p-2'>
-                <h2 className=' text-2xl font-bold py-1 text-gry-950 '>{product.title}</h2>
-                <h2 className=' text-2xl font-extrabold p-1 text-red-700'> {product.price}<span> $$</span></h2>
+                className=' h-[80px] w-[80px] '
+                onClick={() => { OnDetailes(product) }} />
+              </div>
+              
+              <div className=' space-y-3'>
+                <h2 className=' font-medium capitalize leading-3'>{product.title}</h2>
+                <h2 className=' font-semibold '> {product.price}<span> $$</span></h2>
 
-                <div className='flex text-white p-2'>
-                  <button onClick={() => { OnDetailes(product) }}
-                    className='flex items-center  bg-red-400 sm:text-xl
-                       hover:bg-red-500 rounded-xl text-center  sm:px-3 p-1  my-1'>
-                    <AiFillCaretRight size={25} className='mx-1' />
-                    Details</button>
+                <div className='flex gap-2 '>
+                <div className="flex items-center border justify-between border-gray-500 text-black rounded-full overflow-hidden ">
+                  {/* Decrement Button */}
+                  <button
+                    onClick={() =>
+                      handleQuantityChange({
+                        target: { value: Math.max(1, quantity - 1) },
+                      })
+                    }
+                    className=" text-gray-700  px-2 transition-all"
+                  >
+                    -
+                  </button>
+
+                  {/* Quantity Input */}
+                  <input
+                    type="text"
+                    className="w-16 outline-none text-center text-xl  border-t border-b border-gray-200"
+                    max={10}
+                    min={1}
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                  />
+
+                  <button
+                    onClick={() =>
+                      handleQuantityChange({
+                        target: { value: Math.min(10, quantity + 1) },
+                      })
+                    }
+                    className=" text-gray-700  px-2  transition-all"
+                  >
+                    +
+                  </button>
+                </div>
 
                   <button onClick={() => { onDeletFromCart(product) }}
-                    className='flex items-center rounded-full text-center py-1
-                     hover:text-red-400 px-2 
-                     text-red-500 my-1'>
-                    <AiFillDelete size={35} className='' />
+                    className='flex items-center rounded-full text-center 
+                    
+                     text-gray-800 '>
+                    <RiDeleteBin5Line size={25} className='' />
                   </button>
                 </div>
 
@@ -142,16 +177,23 @@ for (; key = keys[i]; i++) {
 
       </div>
 
-      <div className='p-2 text-white sm:flex fixed bottom-0 start-0 end-0 bg-slate-50'>
-        <div className=' flex space-x-3 text-xl p-3 w-full'>
-          <h1 className='text-xl font-semibold text-gray-900 '>SubTotal <span> ({dataIncart.length} item)</span></h1>
-          <h2 className=' text-red-700 text-2xl font-extrabold '>{total}<span> $$</span></h2>
+
+      <div className='w-1/3 flex flex-col pt-5'>
+      <div className=' border  p-3 md:p-8 sticky'> 
+        <h2 className=' text-xl font-semibold pb-5 border-b mb-5 '>Order summary</h2>
+        <p className='mb-5'>Tax included, shipping and discounts calculated at checkout.
+        </p>
+      <div className=' space-x-3  p-3 w-full gap-2 flex  justify-between font-semibold '>
+          <h1 className=''>SubTotal <span> ({dataIncart.length} item)</span></h1>
+          <h2 className=' '>{total}<span> $$</span></h2>
         </div>
 
         <button onClick={() => { OnBuy() }}
-          className=' w-full text-2xl font-semibold text-center bg-red-600 rounded-xl  px-3 py-1 
-             hover:bg-red-500 '>
+          className=' w-full text-2xl font-semibold text-center bg-orange-600 rounded-xl  px-3 py-1  text-white
+             hover:bg-orange-500 '>
           Buy Now</button>
+      </div>
+       
       </div>
     </div>
 

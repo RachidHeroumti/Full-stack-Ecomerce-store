@@ -48,9 +48,9 @@ function NavBar() {
   }, []);
 
   return (
-    <div className="w-full flex  justify-center h-20   text-white ">
+    <div className="w-full bg-slate-700 flex  justify-center h-20   text-white ">
       <div
-        className=" container flex items-center justify-between bg-slate-700 
+        className="  flex items-center justify-between  
          w-full"
       >
         <div className=" flex  items-center ">
