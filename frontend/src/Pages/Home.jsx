@@ -16,7 +16,7 @@ function Home() {
            font-poppins  "
     >
       <TopHeader/>
-      <div className=" xl:px-28 px-0"> 
+      <div className=" xl:px-28 px-5"> 
       <Hero />
       <ListCollection />
       <SrinkListCollection />

@@ -62,8 +62,8 @@ function Hero() {
 
   return (
     <div className=" container w-full mx-auto pt-5 " id="home">
-      <div className="flex items-center ">
-        <div className="w-full h-[600px] flex  flex-col justify-center text-gray-900 gap-1">
+      <div className="flex md:items-center ">
+        <div className="w-full  md:h-[600px] flex  flex-col justify-center text-gray-900 gap-1">
           <h4 className="  text-2xl md:text-4xl  font-bold">Welecom to </h4>
           <h4 className=" text-2xl md:text-4xl  font-bold"> shop onlay </h4>
 

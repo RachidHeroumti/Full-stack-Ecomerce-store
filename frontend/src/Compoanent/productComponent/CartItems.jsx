@@ -106,8 +106,8 @@ for (; key = keys[i]; i++) {
   }
 
   return (
-    <div className='justify-between gap-10  flex p-1 container font-poppins h-full '>
-      <div className=' w-2/3 space-y-2 h-full'>
+    <div className='justify-between gap-10  flex flex-col md:flex-row p-1 container font-poppins h-full '>
+      <div className='md:w-2/3 w-full space-y-2 h-full'>
         {dataIncart.map((product, i) => {
           return (
 
@@ -178,7 +178,7 @@ for (; key = keys[i]; i++) {
       </div>
 
 
-      <div className='w-1/3 flex flex-col pt-5'>
+      <div className='md-:w-1/3 w-full flex flex-col pt-5'>
       <div className=' border  p-3 md:p-8 sticky'> 
         <h2 className=' text-xl font-semibold pb-5 border-b mb-5 '>Order summary</h2>
         <p className='mb-5'>Tax included, shipping and discounts calculated at checkout.

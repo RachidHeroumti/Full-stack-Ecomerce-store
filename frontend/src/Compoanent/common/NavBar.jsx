@@ -48,17 +48,16 @@ function NavBar() {
   }, []);
 
   return (
-    <div className="w-full bg-slate-700 flex  justify-center h-20   text-white ">
+    <div className="w-full bg-slate-700 flex  justify-center h-20   text-white p-1">
       <div
-        className="  flex items-center justify-between  
+        className="  flex items-center justify-between gap-1  
          w-full"
       >
-        <div className=" flex  items-center ">
-          <div className=" flex items-center md:hidden">
+        <div className=" flex  items-center gap-1 justify-between ">
+          <div className=" flex items-center md:hidden  ">
             {
               <AiOutlineMenu
                 size={20}
-                className="  px-2"
                 onClick={() => {
                   setNav(true);
                 }}
@@ -67,12 +66,12 @@ function NavBar() {
           </div>
           <a
             href="/"
-            className=" text-3xl italic font-bold  px-3 hidden xl:flex uppercase "
+            className=" text-xl italic font-bold  px-3 flex uppercase "
           >
             Shop Onlay
           </a>
         </div>
-        <div className=" bg-slate-600 w-1/3 rounded-full h-fit  flex items-center  p-2 space-x-1">
+        <div className=" bg-slate-600   w-1/3  rounded-full h-fit hidden  md:flex items-center p-1 md:p-2 space-x-1">
           <AiOutlineSearch
             size={20}
             className=" hidden sm:flex "

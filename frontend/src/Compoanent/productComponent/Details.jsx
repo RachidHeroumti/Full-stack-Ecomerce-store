@@ -85,7 +85,7 @@ function Details({ product }) {
       <div className="flex bg-gray-50 p-4">
         <div className="md:flex">
           <div className="md:w-1/2 flex flex-col w-full items-center justify-center">
-            <div className="w-full max-w-[500px]">
+            <div className="w-full max-w-[250px]  md:max-w-[500px]">
               {product.images && product.images.length > 0 ? (
                 <Swiper
                   modules={[Navigation, Pagination, Scrollbar]}
@@ -101,7 +101,7 @@ function Details({ product }) {
                         src={image}
                         alt={`Product Image ${index + 1}`}
                         onClick={() => setImagePr(image)}
-                        className="h-[500px] w-[500px] cursor-pointer rounded-md hover:scale-105 transition-transform duration-200"
+                        className=" cursor-pointer rounded-md hover:scale-105 transition-transform duration-200"
                       />
                     </SwiperSlide>
                   ))}

@@ -2,7 +2,7 @@ import React from "react";
 
 function SrinkListCollection() {
   return (
-    <div className="grid grid-cols-4 gap-4 p-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
       {/* Large item */}
       <div className="relative col-span-2 row-span-2">
         <div className="absolute top-4 left-4 bg-pink-800 text-white text-sm font-bold px-3 py-1 rounded-full">
