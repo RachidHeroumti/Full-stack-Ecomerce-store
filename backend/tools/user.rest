@@ -1,0 +1,11 @@
+@url=http://localhost:5000
+@token=
+
+###
+POST {{url}}/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "herou@gmail.com",
+    "password": "test123"
+}

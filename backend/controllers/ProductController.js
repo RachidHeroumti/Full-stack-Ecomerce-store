@@ -1,3 +1,4 @@
+import { query } from 'express';
 import productService from '../Services/ProductService.js';
 
 export const createProduct = async (req, res) => {
@@ -52,3 +53,14 @@ export const updateProduct = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
+export const searchProduct = async(req,res)=>{
+  const {query}=req.query ;
+  try {
+    const products= await productService.searchProduct(query);
+    res.status(200).json({products});
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+}

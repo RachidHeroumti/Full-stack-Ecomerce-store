@@ -86,10 +86,34 @@ const updateProduct = async (id, updateData) => {
   return product;
 };
 
+const searchProduct = async (query) => {
+  try {
+    const searchPattern = new RegExp(query, 'i');
+    
+    const products = await Product.find({
+      $or: [
+        { title: { $regex: searchPattern } },
+        { description: { $regex: searchPattern } } 
+      ]
+    });
+
+    if (!products || products.length === 0) {
+      throw new Error(`No products found matching: ${query}`);
+    }
+
+    return products;
+  } catch (error) {
+    console.log("🚀 ~ searchProduct ~ error:", error);
+    throw error;
+  }
+};
+
+
 export default {
   createProduct,
   getProduct,
   getProducts,
   getProductByCategory,
   updateProduct,
+  searchProduct
 };
