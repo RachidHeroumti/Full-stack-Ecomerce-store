@@ -64,3 +64,26 @@ export const searchProduct = async(req,res)=>{
     res.status(404).json({ message: err.message });
   }
 }
+
+export const deleteProduct = async(req,res)=>{
+  const{id}=req.params;
+  try{
+
+  }catch(err){
+    console.log("err:", err)
+    res.status(404).json({message:err.message})
+
+    
+  }
+}
+
+export const filterProducts= async(req,res)=>{
+  const query=req.query;
+  try{
+    const products =  productService.filterProducts(query);
+  return  res.status(200).json({products});
+  }catch(err){
+    console.log("err :",err);
+    res.status(404).json({message:err.message});
+  }
+}

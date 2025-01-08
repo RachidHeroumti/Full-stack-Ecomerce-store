@@ -108,6 +108,35 @@ const searchProduct = async (query) => {
   }
 };
 
+const filterProducts = async (query) => {
+
+  try {
+    const filterQuery = {};
+    
+    if (query.category) {
+      filterQuery.category = query.category;
+    }
+
+    if (query.price && Array.isArray(query.price) && query.price.length === 2) {
+      filterQuery.price = {
+        $gte: query.price[0].toString(),
+        $lte: query.price[1].toString()
+      };
+    }
+    if (query.brands && query.brands.length > 0) {
+      filterQuery.brands = { $in: query.brands };
+    }
+    console.log("🚀 ~ filterProducts ~ filterQuery:", filterQuery)
+    const products = await Product.find(filterQuery);
+    return products;
+    
+  } catch (error) {
+    console.log("🚀  error:", error);
+    throw error;
+  }
+};
+
+
 
 export default {
   createProduct,
@@ -115,5 +144,6 @@ export default {
   getProducts,
   getProductByCategory,
   updateProduct,
-  searchProduct
+  searchProduct,
+  filterProducts
 };

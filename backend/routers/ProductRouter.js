@@ -6,12 +6,14 @@ import {
   updateProduct,
   getProducts,
   getProductByCategory,
-  searchProduct
+  searchProduct,
+  filterProducts
 } from "../controllers/ProductController.js";
 const route = express.Router();
 
 route.get("/products", getProducts);
 route.get("/products/search", searchProduct);
+route.get("/products/filter", filterProducts);
 route.get("/product/:id", getProduct);
 route.post("/product/create/", protect, ProtectForAdmin, createProduct);
 route.get("/products/category/:{category}", getProductByCategory);
