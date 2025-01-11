@@ -9,14 +9,14 @@ export const getProductRoute = `${host}/products`;//GET
 export const getOnePrRoute = `${host}/product`;//GET
 export const getPrsWere = `${host}/products/where`;//GET
 
-export const CreateProductRoute = `${host}/product`;//POST
+export const CreateProductRoute = `${host}/product/create`;//POST
 export const UpdatePrRoute = `${host}/product`;//
 
 
 //Category
 export const CreateCategoryRoute = `${host}/category/`;//POST
-export const getCategories = `${host}/categories/`;//GET
-export const getOneCategory = `${host}/category/`; //with : id
+export const getCategoriesRoute = `${host}/categories/`;//GET
+export const getOneCategoryRoute = `${host}/category/`; //with : id
 //cart
 export const AddcardRoute = `${host}/cart/add-create`;
 export const getcardRoute = `${host}/cart/get`;

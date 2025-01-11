@@ -20,13 +20,12 @@ function App() {
           path="/"
           element={
             <div>
-              <Navbar/>
-               <div className="flex  ">
-              <SidBar />
-              <Outlet />
+              <Navbar />
+              <div className="flex  ">
+                <SidBar />
+                <Outlet />
+              </div>
             </div>
-            </div>
-           
           }
         >
           <Route path="" element={<DashboardAdmin />} />
@@ -38,9 +37,30 @@ function App() {
               </div>
             }
           />
-          <Route path="orders" element={<Orders />} />
-          <Route path="users" element={<Users />} />
-          <Route path="settings" element={<Settings />} />
+          <Route
+            path="orders"
+            element={
+              <div className=" w-full ">
+                <Orders />
+              </div>
+            }
+          />
+          <Route
+            path="users"
+            element={
+              <div className=" w-full ">
+                <Users />
+              </div>
+            }
+          />
+          <Route
+            path="settings"
+            element={
+              <div className=" w-full ">
+                <Settings />
+              </div>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
