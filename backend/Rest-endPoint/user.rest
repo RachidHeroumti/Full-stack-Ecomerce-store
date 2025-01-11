@@ -1,6 +1,16 @@
 @url=http://localhost:5000
 @token=
 
+
+### Register User###
+POST {{url}}/api/user/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"shopino",
+    "email": "shopino.hero@gmail.com",
+    "password": "test123"
+}
 ###
 POST {{url}}/api/user/login HTTP/1.1
 Content-Type: application/json

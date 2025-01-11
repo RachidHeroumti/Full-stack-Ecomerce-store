@@ -2,7 +2,7 @@ import express from "express";
 import {
   Register,
   login,
-  updateUserRoleByAdmin,
+  updateUserRoleByAdmin,getTokenEmailVerification
 } from "../controllers/authController.js";
 import { protect, ProtectForAdmin } from "../middelware/authMiddlware.js";
 
@@ -16,5 +16,6 @@ route.post(
   ProtectForAdmin,
   updateUserRoleByAdmin
 );
+route.get('/verify-email/:token',getTokenEmailVerification);
 
 export default route;

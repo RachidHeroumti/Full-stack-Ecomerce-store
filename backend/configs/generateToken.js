@@ -1,9 +1,11 @@
- import jwt from 'jsonwebtoken'
-  const generateToken=(id)=>{
+import jwt from 'jsonwebtoken'
+  const generateToken=(id,expiration=30)=>{
     return jwt.sign({id},process.env.TOKEN_SCRT,{
-      expiresIn:'30d'
+      expiresIn:`${expiration}d`
     }) ;
   }
 
   export default generateToken ;
+
+
 

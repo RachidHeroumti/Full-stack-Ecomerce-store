@@ -1,10 +1,10 @@
 import Role from "../model/Role.js";
 
-export const createRole=(req,res)=>{
+export const createRole=async(req,res)=>{
     const {role}=req.body;
      try{
         const roleobject=new Role({role});
-         role.save();
+       await roleobject.save();
          res.status(200).json({ roleobject });
      }catch(err) {
      console.log("🚀 ~ createRole ~ err:", err)
@@ -12,9 +12,9 @@ export const createRole=(req,res)=>{
     }
 }
 
-export const getRolles=(req,res)=>{
+export const getRolles=async(req,res)=>{
     try{
-        const roles = Role.find();
+        const roles = await Role.find();
         res.status(200).json({roles});
     }catch(err){
         console.log("🚀 ~ getRolles ~ err:", err) ;

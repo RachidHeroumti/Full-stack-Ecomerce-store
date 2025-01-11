@@ -1,0 +1,15 @@
+@url=http://localhost:5000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzhmYzU4NjE2MjgwOTM1MDZmNDE0MiIsImlhdCI6MTczNjU0NTk3OCwiZXhwIjoxNzM5MTM3OTc4fQ.OBnLdvkkJVy5OP6NKLw3-TSgbZnUcEl-wMrpLkWwD3A
+
+###
+POST {{url}}/api/role/create HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "role": "subscriber"
+}
+
+###
+GET {{url}}/api/role/get-all HTTP/1.1
+Content-Type: application/json

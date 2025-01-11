@@ -6,6 +6,7 @@ const userSchema=mongoose.Schema({
   password:{type :String ,required :true},
   isAdmin :{type :Boolean ,required :true,default:false},
   role :{type :String ,required :true,default:"user"},
+  isVerified:{type :Boolean ,required :true,default :false}
 },{timestamp:true})
 
 userSchema.methods.matchPassword = async function(enteredPassword){
