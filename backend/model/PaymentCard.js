@@ -5,6 +5,6 @@ const paymentShema=mongoose.Schema({
   cardNumber :{ type :String ,required :true},
   DtCard :{type : String ,required :true},
   cvv :{ type : String ,required :true}
-})
+},{timestamp:true})
 
 export default mongoose.model("Paymentcard",paymentShema) ;

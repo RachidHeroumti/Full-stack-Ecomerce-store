@@ -10,6 +10,6 @@ const addressSchema=mongoose.Schema({
   province: {type :String ,required:true},
   zipcode: {type :String ,required:true},
   isdefault: {type:Boolean ,required:true,default:true}
-})
+},{timestamp:true})
 
 export default mongoose.model("Address",addressSchema);

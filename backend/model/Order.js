@@ -5,7 +5,9 @@ const orderSchema =mongoose.Schema({
   Products :[{
     product :{type : mongoose.Schema.Types.ObjectId , ref:"Product" ,required:true},
     qunatity :{ type : Number , required :true ,default :1}
-  }]
-})
+  }],
+  status :{type :String ,required :true ,default :"pending"}
+},{timestamp:true})
 
 export default mongoose.model("Order",orderSchema);
+

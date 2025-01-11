@@ -13,7 +13,7 @@ const productSchema=mongoose.Schema({
   reviews :[{ review:{type :String },
       user:{type :mongoose.Schema.Types.ObjectId,ref:"User",required :true}
         }]
-})
+},{timestamp:true})
 
 export default mongoose.model("Product",productSchema);
 
