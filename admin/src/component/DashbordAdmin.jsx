@@ -1,7 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SidBar from "./comman/SideBar";
+import Cookies from 'js-cookie'
+import { useNavigate } from "react-router-dom";
+import { EcoState } from "../Context/EcoProvider";
 
 export default function DashboardAdmin() {
+  const navigate = useNavigate();
+  const{userToken}=EcoState() 
+  
+  useEffect(() => {
+    const token = Cookies.get('token')
+    if (!userToken && !token) {
+      navigate("/login");
+    }
+  }, [])
 
   return (
     <div className="flex min-h-screen font-sans bg-gray-100 w-full">
@@ -14,7 +26,6 @@ export default function DashboardAdmin() {
             </p>
           </header>
         
-
 
           <div>
             {/* Stats Section */}

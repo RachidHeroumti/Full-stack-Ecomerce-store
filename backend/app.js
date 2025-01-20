@@ -10,8 +10,8 @@ import PaymentCardRoute from "./routers/PaymentcardRoute.js"
 import connectDB from "./configs/db.js"
 import AddressRoute from './routers/AddressRoute.js'
 import RoleRoute from './routers/RoleRoute.js'
-
-
+import MediaRoute from './routers/RouteMedia.js' 
+ 
 dotenv.config();
 const app=express();
  
@@ -30,7 +30,8 @@ app.use("/api/order",OrderRoute);
 app.use("/api/address",AddressRoute);
 app.use("/api/paymentcard",PaymentCardRoute);
 app.use("/api/role",RoleRoute);
-
+app.use("/api/media",MediaRoute);
+app.use("/uploads", express.static("uploads"));
 
 app.listen(PORT,()=>{
   console.log("listening to the port :",PORT);

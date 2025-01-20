@@ -1,4 +1,5 @@
-const host = "https://onlay-shop-api.onrender.com/api";
+//const host = "https://onlay-shop-api.onrender.com/api";
+const host = "http://localhost:5000/api"
 
 //auth
 export const loginRoute = `${host}/user/login`;//POST
@@ -11,7 +12,9 @@ export const getPrsWere = `${host}/products/where`;//GET
 
 export const CreateProductRoute = `${host}/product/create`;//POST
 export const UpdatePrRoute = `${host}/product`;//
-
+//Media
+export const uploadMediaRoute= `${host}/media/upload`;//Post
+export const getMediaMediaRoute= `${host}/media/uploads`;//GET
 
 //Category
 export const CreateCategoryRoute = `${host}/category/`;//POST
@@ -30,5 +33,7 @@ export const getAddressRoute = `${host}/address/get/`;//GET
 
 export const PaymentAddRoute = `${host}/paymentcard/add-paymentcard/`;//POST
 export const PaymentGetRoute = `${host}/paymentcard/get-paymentcard/`;//GET
+
+
 
 

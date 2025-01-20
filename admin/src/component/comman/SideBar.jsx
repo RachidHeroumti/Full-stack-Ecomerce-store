@@ -11,6 +11,7 @@ function SidBar() {
           <a href="/orders" className="hover:bg-gray-700 p-3 rounded">Orders</a>
           <a href="/users" className="hover:bg-gray-700 p-3 rounded">Users</a>
           <a href="/settings" className="hover:bg-gray-700 p-3 rounded">Settings</a>
+          <a href="/media" className="hover:bg-gray-700 p-3 rounded">Media</a>
         </nav>
       </aside>
     </div>

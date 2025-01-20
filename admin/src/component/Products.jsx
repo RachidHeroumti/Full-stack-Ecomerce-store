@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 function Products() {
   const navigate = useNavigate();
+  const{userToken}=EcoState()
   const [toAddNewProduct, setToaddNewProduct] = useState(false);
   const {  allProducts } = EcoState();
-const{userToken}=EcoState() 
+ 
 
   useEffect(() => {
     const token = Cookies.get('token')
-    console.log("🚀 ~ useEffect ~ token:", token)
     if (!userToken && !token) {
       navigate("/login");
     }

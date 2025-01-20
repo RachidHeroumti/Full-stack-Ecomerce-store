@@ -6,13 +6,7 @@ function Orders() {
     <div>
         <div className="w-full  p-6 bg-gray-100 rounded-lg shadow-md  overflow-y-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">Products</h1>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
-            onClick={() => setToaddNewProduct(true)}
-          >
-            Add New Product
-          </button>
+          <h1 className="text-2xl font-bold text-gray-800">Odrers</h1>
         </div>
 
         <div className="bg-white rounded-lg shadow overflow-hidden ">

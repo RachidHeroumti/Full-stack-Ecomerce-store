@@ -22,6 +22,7 @@ function EcoProvider({ children }) {
     }
   }, [allProduct])
 
+  
   useEffect(() => {
     const token = cookies.get("token");
     if (token) {

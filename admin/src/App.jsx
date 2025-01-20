@@ -7,8 +7,10 @@ import SidBar from "./component/comman/SideBar";
 import Products from "./component/Products";
 import Orders from "./component/Orders";
 import Settings from "./component/Settings";
+
 import Users from "./component/Users";
 import Navbar from "./component/comman/Navbar";
+import Media from "./component/Media";
 
 function App() {
   return (
@@ -58,6 +60,14 @@ function App() {
             element={
               <div className=" w-full ">
                 <Settings />
+              </div>
+            }
+          />
+           <Route
+            path="media"
+            element={
+              <div className=" w-full ">
+                <Media />
               </div>
             }
           />

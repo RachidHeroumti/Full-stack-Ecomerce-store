@@ -62,7 +62,7 @@ function CardItem({ product, isLoading }) {
               key={product._id}
               onClick={() => OnDetailes()}
               style={{
-                color: "rgb(42, 43, 42)", // Corrected the typo and ensured the value is a string
+                color: "rgb(42, 43, 42)", 
               }}
               className="rounded   w-full relative  pb-10  "
               onMouseOver={() => setHoveredProductId(product._id)}
